@@ -9,3 +9,6 @@ AngélicaWalsh, Daniel Cóstola, Lucila C.Labaki, ʺPerformance-based climatic z
 % see readme
 % type: 
 %           simzoning <name of the file.zon>
+
+
+% the executable requires Matlab RunTime (version)
