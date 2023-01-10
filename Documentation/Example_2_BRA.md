@@ -10,82 +10,131 @@ Toolbox, and the EnergyPlus Version 8.3 are required.
 >
 > **Files required:**
 
-+------------------+------------------+-------------------------------+
-|                  | **File**         | **Location**                  |
-+==================+==================+===============================+
-| 1.  Input file   | BRA_Brazil.zon   | simzoning\\                   |
-+------------------+------------------+-------------------------------+
-| 2.  Shape file   | BRAlimits.shp    | simzo                         |
-|     > of the     |                  | ning\\GISfiles\\AreaOfStudy\\ |
-|     > States of  |                  |                               |
-|     > Florida,   |                  |                               |
-|     > Georgia,   |                  |                               |
-|     > and        |                  |                               |
-|     > Tennessee  |                  |                               |
-+------------------+------------------+-------------------------------+
-| 3.  Weather      | 279 .EPW files   | simzoning\\Weatherfiles\\     |
-|     > files of   |                  |                               |
-|     > the area   |                  |                               |
-|     > of study   |                  |                               |
-+------------------+------------------+-------------------------------+
-| 4.  Idf files    | ModelHVAC.idf    | simzoning\\IDFs\\BRAZIL_IDFS  |
-|                  |                  |                               |
-|                  | ModelNV.idf      |                               |
-+------------------+------------------+-------------------------------+
-| 5.  EnergyPlus   | 8-7-0            |                               |
-|     > Version    |                  |                               |
-+------------------+------------------+-------------------------------+
-| 6.  Alternative  | Degre            | simzoning\\GISf               |
-|     > method for | eDays_Brazil.shp | iles\\CZ_Methods_Comparison\\ |
-|     > comparison |                  |                               |
-|                  | GT_Brazil.shp    |                               |
-+------------------+------------------+-------------------------------+
-| 7.  File         | Muni             | simzoning\\                   |
-|     > containing | cipiosBrasil.csv |                               |
-|                  |                  |                               |
-|    > coordinates |                  |                               |
-|     > of         |                  |                               |
-|     > Brazilian  |                  |                               |
-|                  |                  |                               |
-| > municipalities |                  |                               |
-+------------------+------------------+-------------------------------+
+<table>
+<colgroup>
+<col style="width: 27%" />
+<col style="width: 27%" />
+<col style="width: 45%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th></th>
+<th><strong>File</strong></th>
+<th><strong>Location</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><ol type="1">
+<li><blockquote>
+<p>Input file</p>
+</blockquote></li>
+</ol></td>
+<td>BRA_Brazil.zon</td>
+<td>simzoning\</td>
+</tr>
+<tr class="even">
+<td><ol start="2" type="1">
+<li><blockquote>
+<p>Shape file of the States of Florida, Georgia, and Tennessee</p>
+</blockquote></li>
+</ol></td>
+<td>BRAlimits.shp</td>
+<td>simzoning\GISfiles\AreaOfStudy\</td>
+</tr>
+<tr class="odd">
+<td><ol start="3" type="1">
+<li><blockquote>
+<p>Weather files of the area of study</p>
+</blockquote></li>
+</ol></td>
+<td>279 .EPW files</td>
+<td>simzoning\Weatherfiles\</td>
+</tr>
+<tr class="even">
+<td><ol start="4" type="1">
+<li><blockquote>
+<p>Idf files</p>
+</blockquote></li>
+</ol></td>
+<td><p>ModelHVAC.idf</p>
+<p>ModelNV.idf</p></td>
+<td>simzoning\IDFs\BRAZIL_IDFS</td>
+</tr>
+<tr class="odd">
+<td><ol start="5" type="1">
+<li><blockquote>
+<p>EnergyPlus Version</p>
+</blockquote></li>
+</ol></td>
+<td>8-7-0</td>
+<td></td>
+</tr>
+<tr class="even">
+<td><ol start="6" type="1">
+<li><blockquote>
+<p>Alternative method for comparison</p>
+</blockquote></li>
+</ol></td>
+<td><p>DegreeDays_Brazil.shp</p>
+<p>GT_Brazil.shp</p></td>
+<td>simzoning\GISfiles\CZ_Methods_Comparison\</td>
+</tr>
+<tr class="odd">
+<td><ol start="7" type="1">
+<li><blockquote>
+<p>File containing coordinates of Brazilian municipalities</p>
+</blockquote></li>
+</ol></td>
+<td>MunicipiosBrasil.csv</td>
+<td>simzoning\</td>
+</tr>
+</tbody>
+</table>
 
 2.  **Steps**
 
-```{=html}
 <!-- -->
-```
+
 1.  Create a folder C:/simzoning to unzip simzoning files.
 
 2.  Confirm the path of EnergyPlus Version 8.7 installed in the
     computer. If necessary, rewrite the path in the BRA_Brazil.zon file
     used as input data to run this example.
-    ![](./imagesBRA2/media/image1.png){width="4.679391951006124in"
-    height="1.3304352580927383in"}
+    <img src="./imagesBRA2/media/image1.png"
+    style="width:4.67939in;height:1.33044in" />
 
 > Figure 1 Input data file BRA_Brazil.zon
 
 3.  Call simzoning from MATLAB with the BRA_Brazil.zon file as input
     data.
 
-+-----------------------------------------+----------------------------+
-| Case study summary                      |                            |
-+=========================================+============================+
-| ![Mapa Descrição gerada                 | 279 Epws                   |
-| automaticamente](./imagesBRA2/media/    |                            |
-| image2.png){width="1.854861111111111in" |                            |
-| height="1.5759995625546808in"}          |                            |
-+-----------------------------------------+----------------------------+
-|                                         | 2 models                   |
-|                                         |                            |
-|                                         | 5 Performance indicators   |
-|                                         |                            |
-|                                         | Macrozones                 |
-|                                         |                            |
-|                                         | 2 Cold Zones + 8 Hot zones |
-|                                         |                            |
-|                                         | Time estimation 5 hours    |
-+-----------------------------------------+----------------------------+
+<table>
+<colgroup>
+<col style="width: 58%" />
+<col style="width: 41%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th colspan="2">Case study summary</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td rowspan="2"><img src="./imagesBRA2/media/image2.png"
+style="width:1.85486in;height:1.576in"
+alt="Mapa Descrição gerada automaticamente" /></td>
+<td>279 Epws</td>
+</tr>
+<tr class="even">
+<td><p>2 models</p>
+<p>5 Performance indicators</p>
+<p>Macrozones</p>
+<p>2 Cold Zones + 8 Hot zones</p>
+<p>Time estimation 5 hours</p></td>
+</tr>
+</tbody>
+</table>
 
 3.  **Expected results**
 
@@ -93,43 +142,43 @@ Toolbox, and the EnergyPlus Version 8.3 are required.
 > based on points, b) clustering based on municipalities and c)
 > clustering based on interpolated data.
 
-![](./imagesBRA2/media/image3.png){width="5.6527723097112865in"
-height="3.3in"}
+<img src="./imagesBRA2/media/image3.png"
+style="width:5.65277in;height:3.3in" />
 
 > Figure 2 Clustering considering isolated locations
 >
-> ![](./imagesBRA2/media/image4.png){width="6.078436132983377in"
-> height="3.3in"}
+> <img src="./imagesBRA2/media/image4.png"
+> style="width:6.07844in;height:3.3in" />
 >
 > Figure 3 Performance variation of zoning based on isolated locations
 >
-> ![](./imagesBRA2/media/image5.png){width="5.497458442694663in"
-> height="3.3in"}
+> <img src="./imagesBRA2/media/image5.png"
+> style="width:5.49746in;height:3.3in" />
 >
 > Figure 4 Clustering based on municipalities
 
-![](./imagesBRA2/media/image6.png){width="6.042489063867016in"
-height="3.3in"}
+<img src="./imagesBRA2/media/image6.png"
+style="width:6.04249in;height:3.3in" />
 
 > Figure 5 Performance variation of zoning based on municipalities
 
-![](./imagesBRA2/media/image7.png){width="5.67115157480315in"
-height="3.3519991251093613in"}
+<img src="./imagesBRA2/media/image7.png"
+style="width:5.67115in;height:3.352in" />
 
 > Figure 6 Clustering based on a regular grid of interpolated data
 > (Altitude, latitude, and longitude method)
 
-![](./imagesBRA2/media/image8.png){width="6.015999562554681in"
-height="3.303439413823272in"}
+<img src="./imagesBRA2/media/image8.png"
+style="width:6.016in;height:3.30344in" />
 
 > Figure 7 Regular grid zoning boxplot
 
-![](./imagesBRA2/media/image9.png){width="4.532370953630796in"
-height="3.3979833770778654in"}
+<img src="./imagesBRA2/media/image9.png"
+style="width:4.53237in;height:3.39798in" />
 
 > Figure 8 MPMA of clustering results compared to Degree-days and
 > GT-zoning for that region.
 
 See the Brazilian case study_AltLatLon_MacrZ_Report.pdf in the
-C:\\simzoning\\Outputs\\Brazilian case study_CaseStudy folder for
-further details of expected results.
+C:\simzoning\Outputs\Brazilian case study_CaseStudy folder for further
+details of expected results.
