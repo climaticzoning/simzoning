@@ -3,131 +3,88 @@
 > Toolbox, and the EnergyPlus Version 8.7 are required.**
 
 1.  **Example 1 Brazil**
-
-> Zoning the state of Rio Grande do Sul, in Brazil.
->
-> All settings are included in the file BRA_RGS.zon.
+* Zoning the state of Rio Grande do Sul, in Brazil.
+* All settings are included in the file BRA_RGS.zon.
 
 2.  **Files required**
 
+|                        |   File          |   Location               |
 |------------------------|-----------------|--------------------------|
-|                        | **File**        | **Location**             |
-|========================|=================|==========================|
 | 1.  Input file         | BRA_RGS.zon     | simzoning\\              |
-|------------------------|-----------------|--------------------------|
-| 2.  Shape file of the  | BRA_RGS.shp     | simzoning\               |
-|     > States of        |                 | \GISfiles\\AreaOfStudy\\ |
-|     > Florida,         |                 |                          |
-|     > Georgia, and     |                 |                          |
-|     > Tennessee        |                 |                          |
-|------------------------|-----------------|--------------------------|
-| 3.  Weather files of   | 35 .EPW files   | s                        |
-|     > the area of      |                 | imzoning\\Weatherfiles\\ |
-|     > study and        |                 |                          |
-|     > surroundings     |                 |                          |
-|------------------------|-----------------|--------------------------|
-| 4.  Idf files          | ModelHVAC.idf   | simzon                   |
-|                        |                 | ing\\IDFs\\BRAZIL_IDFS\\ |
-|                        | ModelNV.idf     |                          |
-|------------------------|-----------------|--------------------------|
+| 2.  Shape file of the<br>States of Florida, <br> Georgia, and <br> Tennessee | BRA_RGS.shp     | simzoning\GISfiles\\AreaOfStudy\\               |
+| 3.  Weather files of <br> the area of <br> study and <br> surroundings | 35 .EPW files   | simzoning\\Weatherfiles\\                        |
+| 4.  Idf files          | ModelHVAC.idf <br> ModelNV.idf  | simzoning\\IDFs\\BRAZIL_IDFS\\                   |
 | 5.  EnergyPlus Version | 8-7-0           |                          |
-|------------------------|-----------------|--------------------------|
-| 6.  Alternative method | Degree          | simzoning\\GISfiles\     |
-|     > for comparison   | Days_Brazil.shp | \CZ_Methods_Comparison\\ |
-|                        |                 |                          |
-|                        | GT_Brazil.shp   |                          |
-|------------------------|-----------------|--------------------------|
-| 7.  File containing    | Munic           | simzoning\\              |
-|     > coordinates of   | ipiosBrasil.csv |                          |
-|     > Brazilian        |                 |                          |
-|     > municipalities   |                 |                          |
-|------------------------|-----------------|--------------------------|
+| 6.  Alternative method <br> for comparison| DegreeDays_Brazil.shp <br> GT_Brazil.shp         | simzoning\\GISfiles\CZ_Methods_Comparison\\     |
+| 7.  File containing coordinates <br> of Brazilian <br> municipalities  | MunicipiosBrasil.csv           | simzoning\\              |
 
 3.  **Steps**
 
-```{=html}
-<!-- -->
-```
-1.  Create a folder C:/simzoning to unzip simzoning files.
+a.  Create a folder C:/simzoning to unzip simzoning files.
 
-2.  Confirm the path of EnergyPlus Version 8.7 installed in the
+b.  Confirm the path of EnergyPlus Version 8.7 installed in the
     computer. If necessary, rewrite the path in the BRA_RGS.zon file
     used as input data to run this example.
-    ![](./images/media/image1.png){width="4.5883716097987755in"
-    height="0.8513451443569554in"}
+    
+![](./images/media/image1.png)
+<center><b>Figure 1 Input data file BRA_RGS.zon </b></center><br></d1>
 
-Figure 1 Input data file BRA_RGS.zon
+.
 
-3.  Call simzoning from MATLAB with the BRA_RGS.zon file as input data.
+c.  Call simzoning from MATLAB with the BRA_RGS.zon file as input data.
+* 35 Epws 
+* 2 models 
+* 5 Performance indicators
+* No Macrozones
+* 4 Zones
+* Estimated runtime 1 hour
+    
+ ![](./images/media/image2.png)    
+ <d1><center></center><br></d1>   
 
-+-----------------------------------------+----------------------------+
-| > Case study summary                    |                            |
-+=========================================+============================+
-| ![](./ima                               | 35 Epws                    |
-| ges/media/image2.png){width="2.28125in" |                            |
-| height="2.073865923009624in"}           |                            |
-+-----------------------------------------+----------------------------+
-|                                         | 2 models                   |
-|                                         |                            |
-|                                         | 5 Performance indicators   |
-|                                         |                            |
-|                                         | No Macrozones              |
-|                                         |                            |
-|                                         | 4 Zones                    |
-|                                         |                            |
-|                                         | Time estimation 1 hour     |
-+-----------------------------------------+----------------------------+
-
-4.  **Expected results**
-
+d.  **Expected results**
+    
 A Region with 4 Zones considering 3 Zoning resolution. A) Clustering
 based on points, b) clustering based on municipalities and c) clustering
 based on interpolated data.
 
 ![Gráfico, Mapa Descrição gerada
-automaticamente](./images/media/image3.png){width="6.327723097112861in"
-height="3.949838145231846in"}
+automaticamente](./images/media/image3.png)
 
-Figure 2 Clustering based on isolated locations
+<d1><center><b>Figure 2 Clustering based on isolated locations </b></center><br></d1>
 
 ![Gráfico, Gráfico de caixa estreita Descrição gerada
-automaticamente](./images/media/image4.png){width="6.012345800524934in"
-height="3.3403204286964128in"}
+automaticamente](./images/media/image4.png)
 
-Figure 3 Isolated locations zoning boxplot
+<d1><center><b>Figure 3 Isolated locations zoning boxplot </b></center><br></d1>
 
 ![Gráfico, Mapa Descrição gerada
-automaticamente](./images/media/image5.png){width="6.330816929133858in"
-height="3.6674912510936135in"}
+automaticamente](./images/media/image5.png)
 
-Figure 4 Clustering based on municipalities
-
-![Gráfico, Gráfico de caixa estreita Descrição gerada
-automaticamente](./images/media/image6.png){width="5.923041338582677in"
-height="3.2874464129483814in"}
-
-Figure 5 Zoning based on municipalities boxplot
-
-> ![Mapa Descrição gerada
-> automaticamente](./images/media/image7.png){width="6.483009623797026in"
-> height="3.706700568678915in"}
-
-Figure 6 Clustering based on a regular grid of interpolated data (ANN
-interpolation method)
+<d1><center><b>Figure 4 Clustering based on municipalities </b></center><br></d1>
 
 ![Gráfico, Gráfico de caixa estreita Descrição gerada
-automaticamente](./images/media/image8.png){width="6.229981408573928in"
-height="3.5145100612423446in"}
+automaticamente](./images/media/image6.png)
+<d1><center><b>Figure 5 Zoning based on municipalities boxplot </b></center><br></d1>
 
-Figure 7 Zoning based on a regular grid boxplot
+![Mapa Descrição gerada
+automaticamente](./images/media/image7.png)
+<d1><center><b>Figure 6 Clustering based on a regular grid of interpolated data (ANN
+interpolation method)</b></center><br></d1>
+
+
+![Gráfico, Gráfico de caixa estreita Descrição gerada
+automaticamente](./images/media/image8.png)
+<d1><center><b>Figure 7 Zoning based on a regular grid boxplot </b></center><br/></d1>
+
 
 ![Gráfico, Gráfico de barras Descrição gerada
-automaticamente](./images/media/image9.png){width="5.033405511811024in"
-height="3.949390857392826in"}
+automaticamente](./images/media/image9.png)
 
-Figure 8 MPMA of clustering results compared to the Degreedays zoning
-and the GT zoning for the area under study
+<d1><center><b>Figure 8 MPMA of clustering results compared to the Degreedays zoning
+and the GT zoning for the area under study </b></center><br></d1>
+
 
 See PDF file Rio Grande do Sul_ANN_Report.pdf in the output folder:
-simzoning/Outputs/ Rio_Grande_do_Sul_CaseStudy /, for further details
+simzoning/Outputs/ Rio_Grande_do_Sul_CaseStudy, for further details
 about expected results.
