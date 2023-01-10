@@ -6,3 +6,7 @@ Angélica Walsh, Daniel Cóstola, Lucila C.Labaki, ʺPerformance-based climatic 
 
 This application requires Matlab.
 See instructions on the Documents folder.
+
+Disclaimer:
+IDFs and weather files provided just for test purposes.
+Please refer to --- for the original files and copyrights.
