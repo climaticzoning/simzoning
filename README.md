@@ -1,13 +1,19 @@
 # SimZoning
 Toolbox for climatic zoning for building energy purposes.
 
-On Matlab, type simzoning <input-file>
-Structure of the input file is provided on Documentation/Inputfile_simzoning.md
+On Matlab, go to the root folder of simzoning and start a new zoning analysis using:
+```
+simzoning inputfilename.zon
+```
 
-Three examples of input file (and respective auxiliary folders and files) are provided with the source code:
+The structure of the input file and available options are described on Documentation/Inputfile_simzoning.md
+
+Three examples of input files (and respective auxiliary folders and files) are provided with the source code:
 * BRA_RGS.zon
 * BRA_Brazil.zon
 * USA.zon
+
+This examples are described in the Documentation folder.
 
 Please cite as:
 Angélica Walsh, Daniel Cóstola, Lucila C.Labaki, ʺPerformance-based climatic zoning method for building energy efficiency applications using cluster analysisʺ, Energy (255) 2022. https://doi.org/10.1016/j.energy.2022.124477
