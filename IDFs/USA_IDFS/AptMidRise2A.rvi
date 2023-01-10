@@ -1,0 +1,16 @@
+eplusout.eso
+eplusout.csv
+Site Outdoor Air Drybulb Temperature
+ROOM_VENTILATION_SCHEDULE,Schedule Value
+ROOM_VENTILATION_SCHEDULE,Schedule Value
+LIVING OCCUPANCY SCHEDULE,Schedule Value
+R1,Zone Operative Temperature
+R1,Zone Air Relative Humidity
+R1,Zone Thermal Comfort ASHRAE 55 Adaptive Model Temperature
+R2,Zone Operative Temperature
+R2,Zone Air Relative Humidity
+R2,Zone Thermal Comfort ASHRAE 55 Adaptive Model Temperature
+LIVINGKITCH,Zone Operative Temperature
+LIVINGKITCH,Zone Air Relative Humidity
+LIVINGKITCH,Zone Thermal Comfort ASHRAE 55 Adaptive Model Temperature
+0
