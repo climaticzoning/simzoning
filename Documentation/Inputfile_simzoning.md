@@ -1,3 +1,7 @@
+Input parameters for the zoning processes and location of necessary files are defined in a file extention .zon
+
+The following fields can be described in this file.
+
 <table>
 <colgroup>
 <col style="width: 1%" />
