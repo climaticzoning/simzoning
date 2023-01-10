@@ -1,0 +1,65 @@
+{
+        "CaseStudy":"Brazilian case study",
+        "RunSimulations": 1,
+        "GridSize_IDW":150,  
+        "Interpolation":1,
+        "Interpolation_Method":2,
+                
+        "mainProjectFolder": "C:/simzoning/",
+	  "BuildingIDFPath": "C:/simzoning/IDFS/BRAZIL_IDFS/",
+        "SimresultsOUTPUTpath": "C:/simzoning/Simulations_SZ/",
+        "Aggregated_Simesults_Path":"./simresults/", 
+         
+	  "EPlusPath": "C:/EnergyPlusV8-7-0/",
+        "WeatherPath": "C:/EnergyPlusV8-7-0/WeatherData/",
+        
+        "Predifined_listofweatherfiles": 1,
+        "Weatherfiles_searching_prefix":["*BRA_*.epw"],
+
+        "WeatherSource":"TMYx20072021",
+        "run_simulations_with_all_climates": 1,
+        "jmin": 1, 
+        "Maxi_Num_of_climates_for_simulation": 10,
+        "Num_of_cores": 4,
+       
+        "PerformanceIndicator":["Cooling", "Heating", "MGR", "Overheating","Cold discomfort"],
+        "PerformanceIndicator_Zones_order":["Cooling"],
+        "PerformanceIndicator_Units":["(kWh/m2.a)", "(kWh/m2.a)", "(%)", "(%)", "(%)"],
+        "Building_Zones_considered_for_PerformanceIndex_calculation":["R1","R2","LIVINGKITCH"],
+        "Building_Zones_occupation_Schedule":["ROOM_VENTILATION_SCHEDULE","ROOM_VENTILATION_SCHEDULE","LIVING OCCUPANCY SCHEDULE"],
+        "Conditioning_type_tag":["HVAC","NV"],
+
+        "Row_heating_cooling":["49","50"],
+        "Column_heating_cooling":["6","5"],
+        "Line_EPW":["5","5"],
+    	              
+        "NumberofZones":4,
+        "Macrozones_divisions": 1,
+        "Number_of_subzones": ["2","8"],
+        "Name_of_Macrozones": ["Cold Region","Cooling dominated Region"],
+
+        "Zoning_grid_type": ["Isolated_Locations","Municipalities","Regular_Grid"],
+        "Zoning_isolated_locations": 1,
+        "grid_of_points_exceeds_areaofstudy": 0,
+        "Zoning_interpolated_PerfData_IrregularGrid": 1,
+        "Zoning_interpolated_PerfData_RegularGrid": 1,
+        "Irregular_grid_input_data":  "MunicipiosBrasil.csv",
+        "IrregularGrid_exceeds_areaofstudy": 1,
+       
+        "AlternativeMethod_for_comparison": 1,
+        "Name_of_AlternativeMethod_for_comparison": ["DegreeDays_Brazil","GT_Brazil"],
+      
+        "AreaofStudyShapefile_Path":"./GISfiles/AreaOfStudy/",
+        "ShapeFileName_AreaofStudy":"BRAlimits.shp",
+        "Elevation_file": "topografia1_ProjectRaster2.tif",      
+
+             	
+        "sizeofpoints":15,
+        "sizeofpointsHDM":50,
+        "TitlefontSize":22,
+        "TextFontSize":10,
+        "SubtitleFontSize":18,
+        "LabelFontSize":15
+
+      
+}

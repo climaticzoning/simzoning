@@ -1,0 +1,62 @@
+{
+        "CaseStudy":"Florida Georgia and Tennessee",
+        "RunSimulations":1,
+        "GridSize_IDW":100,  
+        "Interpolation":1,
+        "Interpolation_Method":2,
+           
+        "mainProjectFolder": "C:/simzoning/",
+	  "BuildingIDFPath": "C:/simzoning/IDFS/USA_IDFS/",
+        "SimresultsOUTPUTpath": "C:/simzoning/Simulations_SZ/",
+        "Aggregated_Simesults_Path":"./simresults/", 
+       
+	  "EPlusPath": "C:/EnergyPlusV8-3-0/",
+        "WeatherPath": "C:/EnergyPlusV8-3-0/WeatherData/",
+        
+        "Predifined_listofweatherfiles": 1,
+        "Weatherfiles_searching_prefix":["*USA_*.epw"],
+
+        "WeatherSource":"TMY3",
+        "run_simulations_with_all_climates": 1,
+        "jmin": 1, 
+        "Maxi_Num_of_climates_for_simulation": 2,
+        "Num_of_cores": 4,
+        "PerformanceIndicator":["Cooling", "Heating"],
+        "PerformanceIndicator_Zones_order":["Cooling"],
+        "PerformanceIndicator_Units":["(kWh/m2.a)", "(kWh/m2.a)"],
+        "Building_Zones_considered_for_PerformanceIndex_calculation":["none"],
+        "Building_Zones_occupation_Schedule":["none"],
+        "Conditioning_type_tag":["AptMi","none"],
+
+        "Row_heating_cooling":["49","50"],
+        "Column_heating_cooling":["3","2"],
+        "Line_EPW":["5","5"],
+            
+        "NumberofZones":4,
+        "Macrozones_divisions": 0,
+        "Number_of_subzones": ["4","1"],
+        "Name_of_Macrozones": ["Cold Region","Cooling dominated Region"],
+
+        "Zoning_grid_type": ["Isolated_Locations","Municipalities","Regular_Grid"],
+        "Zoning_isolated_locations":1,
+        "grid_of_points_exceeds_areaofstudy":1,
+        "Zoning_interpolated_PerfData_IrregularGrid": 0,
+        "Zoning_interpolated_PerfData_RegularGrid": 1,
+        "Irregular_grid_input_data":  ".csv",
+        "IrregularGrid_exceeds_areaofstudy": 1,
+
+        "AlternativeMethod_for_comparison": 1,
+        "Name_of_AlternativeMethod_for_comparison": ["DegreeDays_USA"],
+        
+        "AreaofStudyShapefile_Path":"./GISfiles/AreaOfStudy/",
+        "ShapeFileName_AreaofStudy":"USA_States.shp",
+        "Elevation_file": "USA1_msk_alt_ProjectRaster.tif",
+          	
+        "sizeofpoints":30,
+        "sizeofpointsHDM":60,
+        "TitlefontSize":25,
+        "TextFontSize":10,
+        "SubtitleFontSize":20,
+        "LabelFontSize":20
+     
+}
