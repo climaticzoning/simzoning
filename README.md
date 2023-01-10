@@ -9,4 +9,4 @@ See instructions on the Documents folder.
 
 Disclaimer:
 IDFs and weather files provided just for test purposes.
-Please refer to --- for the original files and copyrights.
+Please refer to DOE Commercial prototype building models (2016) and OneBuilding.Org  or the original files and copyrights.
