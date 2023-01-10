@@ -1,11 +1,16 @@
 # SimZoning
 Toolbox for climatic zoning for building energy purposes.
 
-Please cite as:
-Angélica Walsh, Daniel Cóstola, Lucila C.Labaki, ʺPerformance-based climatic zoning method for building energy efficiency applications using cluster analysisʺ, Energy (255, 2022. https://doi.org/10.1016/j.energy.2022.124477
+On Matlab, type simzoning <input-file>
+Structure of the input file is provided on Documentation/Inputfile_simzoning.md
 
-This application requires Matlab.
-See instructions on the Documentation folder.
+Three examples of input file (and respective auxiliary folders and files) are provided with the source code:
+* BRA_RGS.zon
+* BRA_Brazil.zon
+* USA.zon
+
+Please cite as:
+Angélica Walsh, Daniel Cóstola, Lucila C.Labaki, ʺPerformance-based climatic zoning method for building energy efficiency applications using cluster analysisʺ, Energy (255) 2022. https://doi.org/10.1016/j.energy.2022.124477
 
 Disclaimer:
 IDFs and weather files provided just for demonstration purposes.
