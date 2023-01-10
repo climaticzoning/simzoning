@@ -1,14 +1,8 @@
 # SimZoning
-Toolbox for climatic zoning for building energy purposes
-If using this dataset, please cite as:
-AngélicaWalsh, Daniel Cóstola, Lucila C.Labaki, ʺPerformance-based climatic zoning method for building energy efficiency applications using cluster analysisʺ, Energy https://doi.org/10.1016/j.energy.2022.124477
+Toolbox for climatic zoning for building energy purposes.
 
-% to run the program, use the WIndows Power Shell or command prompt
-% go to the folder with the input file parameters
-% the necessary simulation, climate and shape files must be in subfolder,
-% see readme
-% type: 
-%           simzoning <name of the file.zon>
+Please cite as:
+Angélica Walsh, Daniel Cóstola, Lucila C.Labaki, ʺPerformance-based climatic zoning method for building energy efficiency applications using cluster analysisʺ, Energy (255, 2022. https://doi.org/10.1016/j.energy.2022.124477
 
-
-% the executable requires Matlab RunTime (version)
+This application requires Matlab.
+See instructions on the Documents folder.
