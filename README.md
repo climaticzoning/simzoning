@@ -7,7 +7,7 @@ SimZoning provides a set of routines for the development and validation of perfo
 ### Dependancies
 SimZoning requires the following applications.
   - MATLABR2022b, and the tolboxes: Deep Learning, Mapping, Matlab Report Generator, Statistic and Machine Learning, 
-  - EnergyPlus Version 8.7
+  - EnergyPlus in a version compatible with the .idf files adopted by the user.
 
 ### Input data required
 Users must provide the following data to this application:
