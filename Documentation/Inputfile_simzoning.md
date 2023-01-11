@@ -1,129 +1,84 @@
 Input parameters for the zoning processes and location of necessary files are defined in a file extention .zon
 
-The following fields can be described in this file.
+The file adopts the JSON format syntax.
 
-<table style="table-layout: fixed; width: 60%">
-<colgroup>
-<col style="width: 1%" />
-<col style="width: 20%" />
-<col style="width: 1%" />
-<col style="width: 3%" />
-<col style="width: 28%" />
-<col style="width: 0%" />
-<col style="width: 2%" />
-<col style="width: 38%" />
-<col style="width: 1%" />
-<col style="width: 2%" />
-</colgroup>
+The following should be included in the file.
+
+* CaseStudy
+  - String
+  - Usage: String defining the name of this analysis. This text is used when naming result files and also in automatically generated reports.
+  - Example: "CaseStudy":"Brazilian case study",
+
+* RunSimulations
+  - Boolean: 1 (=yes) or 0 (=no)
+  - Usage: This option allows the user to run (1) or to skip (0) simulations. This is useful when the user is developing further zoning alternative based on the same simulation results available from a previous analysis. As simulations are time-consuming, skipping simulations allows saving time in new analysis. If the user selects skipping simulations, but such results are not found in the expected folder, simzoning will return an error.
+  - Example: "RunSimulations": 1,
+
+* GridSize_IDW
+  - Integer
+  - Usage: Define the size of the grid to perform interpolation (units?), If interpolation is not enable in the Interpolation field this value is ignored.
+  - Example: "GridSize_IDW":150, 
+  - 
+* Interpolation
+  - Boolean: 1 (=yes) or 0 (=no)
+  - Usage: User option to interpolate data. Interpolation is required to perform clustering using some types of zoning resolutions (types b and c, see the field related to clustering resolution types). 
+  - Example: "Interpolation":1,
+
+* Interpolation_Method
+   - Integer: 1(=ANN), 2(=Elevation and coordinates)
+   - Usage: This option indicates the choosen interpolation method. Two methods are available, 1) Based on Artificial Neural Networks(ANN) and 2) based on the an weighted interpolation based on values, coordinates and elevations of the nearby points. Method 2 is reccomended as it results in lower intermplation erros for most cases, but users can try both methods and assess which one performs better for their particular case. 
+  - Example: "Interpolation_Method":2,
+
+<table style="table-layout: fixed; width: 40%">
+
 <thead>
 <tr class="header">
 <th colspan="2"><strong>Input data (Variable)</strong></th>
 <th colspan="3"><strong>Example</strong></th>
-<th colspan="3"><strong>Description</strong></th>
-<th></th>
-<th></th>
-</tr>
+<th colspan="3"><strong>Description</strong></th></tr>
 </thead>
 <tbody>
-<tr class="odd">
-<td colspan="2">"CaseStudy":</td>
-<td colspan="3">"South Region of Brazil "</td>
-<td colspan="3">Case study Name</td>
-<td></td>
-<td></td>
-</tr>
-<tr class="even">
-<td colspan="2">"RunSimulations":</td>
-<td colspan="3">(1=yes), (0=no)</td>
-<td colspan="3">This option allows to run or to skip simulations.</td>
-<td></td>
-<td></td>
-</tr>
-<tr class="odd">
-<td colspan="2">"GridSize_IDW":</td>
-<td colspan="3">Any number e.g 50</td>
-<td colspan="3">Size of the grid to perform interpolation.</td>
-<td></td>
-<td></td>
-</tr>
-<tr class="even">
-<td colspan="2">"Interpolation":</td>
-<td colspan="3">(1=yes), (0=no)</td>
-<td colspan="3">User option to interpolate data. Interpolation is
-required to perform clustering using zoning resolution b<strong><u>)
-Interpolated data using irregular grid and c) Interpolated data using
-regular grid</u></strong></td>
-<td></td>
-<td></td>
-</tr>
-<tr class="odd">
-<td colspan="2">"Interpolation_Method"</td>
-<td colspan="3">(1=ANN), (2=Elevation and coordinates)</td>
-<td colspan="3">This option allows to choose an interpolation method.
-Two methods are available, 1) Based on ANN and 2) based on Coordinates
-and elevation of each point.</td>
-<td></td>
-<td></td>
-</tr>
 <tr class="even">
 <td colspan="8"><strong>Paths</strong></td>
-<td></td>
-<td></td>
 </tr>
 <tr class="odd">
 <td colspan="2"><strong>Input data (Variable)</strong></td>
 <td colspan="3"><strong>Example</strong></td>
 <td colspan="3"><strong>Description</strong></td>
-<td></td>
-<td></td>
 </tr>
 <tr class="even">
 <td colspan="2">"mainProjectFolder":</td>
 <td colspan="3">"C:/simzoning/",</td>
 <td colspan="3">Main folder of simzoning</td>
-<td></td>
-<td></td>
 </tr>
 <tr class="odd">
 <td colspan="2">"BuildingIDFPath":</td>
 <td colspan="3">"C:/simzoning/IDFS/",</td>
 <td colspan="3">Folder of IDFs used for simulation</td>
-<td></td>
-<td></td>
 </tr>
 <tr class="even">
 <td colspan="2">"SimresultsOUTPUTpath":</td>
 <td colspan="3">"C:/simzoning/Simulations_SZ/",</td>
 <td colspan="3">Folder containing simulation results in .csv format and
 .txt format</td>
-<td></td>
-<td></td>
 </tr>
 <tr class="odd">
 <td colspan="2">"Aggregated_Simesults_Path":"</td>
 <td colspan="3">"C:/simzoning/simresults/",</td>
 <td colspan="3">Folder containing aggregated simulation results</td>
-<td></td>
-<td></td>
 </tr>
 <tr class="even">
 <td colspan="2">"EPlusPath":</td>
 <td colspan="3">"C:/EnergyPlusV8-7-0/",</td>
 <td colspan="3">EnergyPlus folder</td>
-<td></td>
-<td></td>
 </tr>
 <tr class="odd">
 <td colspan="2">"WeatherPath"</td>
 <td colspan="3">e.g. "C:/EnergyPlusV8-7-0/WeatherData/",</td>
 <td colspan="3">Weather folder of the simulation program</td>
-<td></td>
-<td></td>
 </tr>
 <tr class="even">
 <td colspan="8"><strong>Simulation settings</strong></td>
-<td></td>
-<td></td>
 </tr>
 <tr class="odd">
 <td colspan="2">"Predifined_listofweatherfiles":</td>
@@ -133,8 +88,6 @@ simulations. This list can be defined using prefix. In case there is not
 a predefined list of weather files, the program can identify which
 weather files fall inside the area of study and near the
 boundaries.</td>
-<td></td>
-<td></td>
 </tr>
 <tr class="even">
 <td colspan="2">"Weatherfiles_searching_prefix":</td>
@@ -143,68 +96,50 @@ boundaries.</td>
 <td colspan="3">This option is useful when the user knows the weather
 files available for the area of study, and will be used if the
 Predifined_listofweatherfiles=1</td>
-<td></td>
-<td></td>
 </tr>
 <tr class="odd">
 <td colspan="2">"WeatherSource":</td>
 <td colspan="3">e.g. "TMYx20072021",</td>
 <td colspan="3">This option indicates the weather files type used in the
 study</td>
-<td></td>
-<td></td>
 </tr>
 <tr class="even">
 <td colspan="2">"run_simulations_with_all_climates":</td>
 <td colspan="3">(1=yes), (0=no)</td>
 <td colspan="3">User option to run simulations with all-weather
 files</td>
-<td></td>
-<td></td>
 </tr>
 <tr class="odd">
 <td colspan="2">"jmin":</td>
 <td colspan="3">1,</td>
 <td colspan="3">First weather file for simulation(from a list)
 adopted.</td>
-<td></td>
-<td></td>
 </tr>
 <tr class="even">
 <td colspan="2">"Maxi_Num_of_climates_for_simulation":</td>
 <td colspan="3">10,</td>
 <td colspan="3">Last weather file selected to run simulations(from a
 list).</td>
-<td></td>
-<td></td>
 </tr>
 <tr class="odd">
 <td colspan="2">"Num_of_cores":</td>
 <td colspan="3">4,</td>
 <td colspan="3">If your computer has multiple CPUs, simzoning will run
 multiple simulations in parallel to reduce computation time.</td>
-<td></td>
-<td></td>
 </tr>
 <tr class="even">
 <td colspan="8"><strong>Extraction of simulation results</strong></td>
-<td></td>
-<td></td>
 </tr>
 <tr class="odd">
 <td colspan="2">"PerformanceIndicator":</td>
 <td colspan="3">["Cooling", "Heating", "MGR" "Overheating",
 "Cold discomfort"],</td>
 <td colspan="3">Performance indicators used for clustering</td>
-<td></td>
-<td></td>
 </tr>
 <tr class="even">
 <td colspan="2">"PerformanceIndicator_Zones_order":</td>
 <td colspan="3">["Cooling"],</td>
 <td colspan="3">Performance indicator used to number zones.</td>
-<td></td>
-<td></td>
 </tr>
 <tr class="odd">
 <td colspan="2">"PerformanceIndicator_Units":</td>
@@ -213,15 +148,11 @@ multiple simulations in parallel to reduce computation time.</td>
 <td colspan="3">Performance indicators units used in figures and
 reports, these units must follow the same order of Performance
 indicators</td>
-<td></td>
-<td></td>
 </tr>
 <tr class="even">
 <td colspan="2"></td>
 <td colspan="3"></td>
 <td colspan="3"></td>
-<td></td>
-<td></td>
 </tr>
 <tr class="odd">
 <td
@@ -231,8 +162,6 @@ colspan="2" style="word-wrap: break-word">"Building_Zones_considered_for_ Perfor
 performance requiring hourly values(e.g. Thermal comfort, MGR). (These
 names should match the variables described in the EnergyPlus output
 reports ).</td>
-<td></td>
-<td></td>
 </tr>
 <tr class="even">
 <td colspan="2">Building_Zones_occupation_Schedule</td>
@@ -241,8 +170,6 @@ SCH_OCUP_SALA]</td>
 <td colspan="3">The name of the schedule of each room used to calculate
 performance. They should follow the same order of building zones
 considered for performance calculation.</td>
-<td></td>
-<td></td>
 </tr>
 <tr class="odd">
 <td colspan="2">Conditioning_type_tag</td>
@@ -250,53 +177,39 @@ considered for performance calculation.</td>
 <td colspan="3">Tags of the .idf name used to identify models with
 natural ventilation and HVAC systems. This information is required to
 calculate the appropriate Performance indicator for each model.</td>
-<td></td>
-<td></td>
 </tr>
 <tr class="even">
 <td colspan="2">"Row_heating_cooling":,</td>
 <td colspan="3">["49","50"]</td>
 <td colspan="3">Row of the EnergyPlus output (*Table.csv) report
 containing heating and cooling annual load.</td>
-<td></td>
-<td></td>
 </tr>
 <tr class="odd">
 <td colspan="2">"Column_heating_cooling":</td>
 <td colspan="3">["6","5"],</td>
 <td colspan="3">Column of the EnergyPlus output (*Table.csv) report
 containing heating and cooling annual load</td>
-<td></td>
-<td></td>
 </tr>
 <tr class="even">
 <td colspan="2">"Line_EPW":</td>
 <td colspan="3">["5","5"],</td>
 <td colspan="3">Line containing the EPW file name in the Energyplus
 output (*Table.csv) report</td>
-<td></td>
-<td></td>
 </tr>
 <tr class="odd">
 <td colspan="8"><strong>Zoning settings</strong></td>
-<td></td>
-<td></td>
 </tr>
 <tr class="even">
 <td colspan="2">“Macrozones_divisions”:</td>
 <td colspan="3">(1=yes), (0=no)</td>
 <td colspan="3">User option to divide the area of study in Macrozones
 prior to the definition of Zones.</td>
-<td></td>
-<td></td>
 </tr>
 <tr class="odd">
 <td colspan="2">“NumberofZones”:</td>
 <td colspan="3">Any number e.g. 4,</td>
 <td colspan="3">Number of climatic zones, used when Macrozones are not
 required.</td>
-<td></td>
-<td></td>
 </tr>
 <tr class="even">
 <td colspan="2">“Number_of_subzones”:</td>
@@ -305,16 +218,12 @@ required.</td>
 will be divided into specific number of zones. The first macrozone is
 the coldest, where heating represents at least 5% of cooling load,
 (considering ideal loads).</td>
-<td></td>
-<td></td>
 </tr>
 <tr class="odd">
 <td colspan="2">“Zoning_grid_type”:</td>
 <td
 colspan="3">[“Isolated_Locations”,”Municipalities”,”Regular_Grid”],</td>
 <td colspan="3">Name of grid types based on resolution</td>
-<td></td>
-<td></td>
 </tr>
 <tr class="even">
 <td colspan="2">“Zoning_isolated_locations”:</td>
@@ -325,32 +234,22 @@ colspan="3">[“Isolated_Locations”,”Municipalities”,”Regular_Grid”],<
 <li><p>Irregular grid</p></li>
 <li><p>Regular grid</p></li>
 </ol></td>
-<td></td>
-<td></td>
 </tr>
 <tr class="odd">
 <td colspan="2">“Zoning_interpolated_PerfData_IrregularGrid”:</td>
 <td colspan="3">(1=yes), (0=no)</td>
-<td></td>
-<td></td>
 </tr>
 <tr class="even">
 <td colspan="2">“Zoning_interpolated_PerfData_RegularGrid”:</td>
 <td colspan="3">(1=yes), (0=no)</td>
-<td></td>
-<td></td>
 </tr>
 <tr class="odd">
 <td colspan="2"></td>
 <td colspan="3"></td>
-<td></td>
-<td></td>
 </tr>
 <tr class="even">
 <td colspan="2"></td>
 <td colspan="3"></td>
-<td></td>
-<td></td>
 </tr>
 <tr class="odd">
 <td colspan="2">"grid_of_points_exceeds_areaofstudy":</td>
@@ -358,8 +257,6 @@ colspan="3">[“Isolated_Locations”,”Municipalities”,”Regular_Grid”],<
 <td colspan="3">User option to indicate if the simulation points exceed
 the area of study, if so, the shape file of the area of study will be
 used to filter data.</td>
-<td></td>
-<td></td>
 </tr>
 <tr class="even">
 <td colspan="2">Irregular_grid_input_data</td>
@@ -367,8 +264,6 @@ used to filter data.</td>
 <td colspan="3">Input file containing coordinates (LAT and LON) of an
 irregular grid. E.g Municipalities. It should be located in the main
 folder of simzoning.</td>
-<td></td>
-<td></td>
 </tr>
 <tr class="odd">
 <td colspan="2">"IrregularGrid_exceeds_areaofstudy</td>
@@ -376,16 +271,12 @@ folder of simzoning.</td>
 <td colspan="3">If the irregular grid adopted (e.g. Municipalities)
 covers a region greater than the area of study, the program will filter
 the data using the shapefile of the area of study.</td>
-<td></td>
-<td></td>
 </tr>
 <tr class="even">
 <td colspan="2">"AlternativeMethod_ for_comparison":</td>
 <td colspan="3">(1=yes), (0=no)</td>
 <td colspan="3">Option to use an alternative method to compare
 clustering results using the MPMA index.</td>
-<td></td>
-<td></td>
 </tr>
 <tr class="odd">
 <td colspan="2">"Name_of_AlternativeMethod_for_comparison":</td>
@@ -395,15 +286,9 @@ the folder C:\simzoning\GISfiles\CZ_Methods_Comparison, without the
 extension .shp</p>
 <p>Such shape file must contain a feature named “zone” containing a
 numeric value to identify climatic zones.</p></td>
-<td></td>
-<td></td>
 </tr>
 <tr class="even">
 <td colspan="8"><strong>Area of study</strong></td>
-</tr>
-<tr class="odd">
-<td colspan="8"></td>
-</tr>
 <tr class="even">
 <td colspan="2">"AreaofStudyShapefile_Path":</td>
 <td colspan="3">"./GISfiles/AreaOfStudy/",</td>
