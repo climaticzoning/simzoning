@@ -1,3 +1,6 @@
+**EnergyPlus Version 8.3 is required.**
+
+
 1.  **Example 1 USA**
 
 > Zoning the states of Florida, Georgia, and Tennessee.
