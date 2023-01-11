@@ -52,7 +52,8 @@ Samples of output reports for each example are available in the Outputs folder.
 
 All weather files, simulation models and GIS shape files required to run these exemples are provided with this source code.
 
-**Disclaimer: **
+**Disclaimer:**
+
 USA IDFs and all weather files provided just for demonstration purposes.
 Please refer to DOE Commercial prototype building models (2016) and OneBuilding.Org for the original files.
 
