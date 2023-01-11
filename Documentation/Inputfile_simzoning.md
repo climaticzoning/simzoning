@@ -1,9 +1,12 @@
+# Instructions to setup SimZoning input files
+
 Input parameters for the zoning processes and location of necessary files are defined in a file extention .zon
 
 The file adopts the JSON format syntax.
 
-The following should be included in the file.
+The following fields should be included in the file:
 
+### Main parameters
 * CaseStudy
   - String
   - Usage: String defining the name of this analysis. This text is used when naming result files and also in automatically generated reports.
