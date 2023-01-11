@@ -8,7 +8,7 @@ simzoning inputfilename.zon
 
 The structure of the input file and available options are described on Documentation/Inputfile_simzoning.md
 
-The folder where necessary input data should be placed (idf files, epw files, shape files) is listed on Documentation/Paths.md
+Folders where necessary input data should be placed (idf files, epw files, shape files) are listed on Documentation/Paths.md
 
 Three examples of input files (and respective auxiliary folders and files) are provided with the source code:
 * BRA_RGS.zon
