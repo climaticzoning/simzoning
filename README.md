@@ -13,7 +13,7 @@ Three examples of input files (and respective auxiliary folders and files) are p
 * BRA_Brazil.zon
 * USA.zon
 
-This examples are described in the Documentation folder.
+These examples are described in the Documentation folder.
 
 Please cite as:
 Angélica Walsh, Daniel Cóstola, Lucila C.Labaki, ʺPerformance-based climatic zoning method for building energy efficiency applications using cluster analysisʺ, Energy (255) 2022. https://doi.org/10.1016/j.energy.2022.124477
