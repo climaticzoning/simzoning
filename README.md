@@ -47,7 +47,10 @@ Three examples of input files (and respective auxiliary folders and files) are p
 * BRA_Brazil.zon
 * USA.zon
 
-These examples are described in the Documentation folder.
+These examples are described in the Documentation folder. Note that different examples require different EnergyPlus versions.
+Samples of output reports for each example are available in the Outputs folder.
+
+All weather files, simulation models and GIS shape files required to run these exemples are provided with this source code.
 
 **Disclaimer: **
 USA IDFs and all weather files provided just for demonstration purposes.
