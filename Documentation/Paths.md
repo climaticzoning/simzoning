@@ -1,5 +1,7 @@
-**<u>FOLDERS OF INPUT DATA (Provided by the user) AND OUTPUT
-DATA(Reports and figures)</u>**
+# List of input/output folders
+
+### Input
+Folders containing files provided by the user.
 
 <table>
 <colgroup>
@@ -52,15 +54,19 @@ values indicating the zone number</td>
 <td>simzoning\</td>
 <td>.csv</td>
 </tr>
-<tr class="odd">
-<td><strong>Output data</strong></td>
-<td rowspan="2">simzoning\Outputs\”name of the case study”</td>
-<td rowspan="2"><p>Figures .png format</p>
-<p>Reports in pdf</p>
-<p>Matrix with Zoning results .csv</p></td>
-</tr>
-<tr class="even">
-<td></td>
-</tr>
 </tbody>
 </table>
+</br>
+
+### Output
+
+SimZoning outputs are placed in the folder:
+
+```
+simzoning\Outputs\”name of the case study”	
+```
+
+Output includes:
+  - Figures .png format
+  - Reports in pdf
+  - Matrix with Zoning results .csv
