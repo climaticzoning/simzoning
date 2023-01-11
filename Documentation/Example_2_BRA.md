@@ -1,3 +1,5 @@
+**EnergyPlus Version 8.3 is required.**
+
 1.  **Example 2 Brazil**
 
 > Zoning of Brazil.
