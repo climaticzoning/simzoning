@@ -1,7 +1,3 @@
-> **To run these example, MATLABR2022b, Deep Learning Toolbox, Mapping
-> Toolbox, Matlab Report Generator, Statistic and Machine Learning
-> Toolbox, and the EnergyPlus Version 8.3 are required.**
-
 1.  **Example 1 USA**
 
 > Zoning the states of Florida, Georgia, and Tennessee.
