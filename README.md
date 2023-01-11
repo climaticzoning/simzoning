@@ -60,3 +60,4 @@ Please refer to DOE Commercial prototype building models (2016) and OneBuilding.
 Further information about the core methods adopted by SimZoning can be found at:
 Angélica Walsh, Daniel Cóstola, Lucila C.Labaki, ʺPerformance-based climatic zoning method for building energy efficiency applications using cluster analysisʺ, Energy (255) 2022. https://doi.org/10.1016/j.energy.2022.124477
 
+A description of updated procedures for the calculation of MPMA and features shown in the BRA_Brazil example is current under review and will be provided in due time. 
