@@ -19,7 +19,7 @@ The following fields should be included in the file:
 
 * GridSize_IDW
   - Integer
-  - Usage: Define the size of the grid to perform interpolation (units?), If interpolation is not enable in the Interpolation field this value is ignored.
+  - Usage: Define the number of the grid elements used in the whole zoning area to perform interpolation. If interpolation is not enable in the Interpolation field this value is ignored.
   - Example: "GridSize_IDW":150, 
 
 * Interpolation
