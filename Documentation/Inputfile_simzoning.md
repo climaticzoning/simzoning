@@ -18,7 +18,7 @@ The following should be included in the file.
   - Integer
   - Usage: Define the size of the grid to perform interpolation (units?), If interpolation is not enable in the Interpolation field this value is ignored.
   - Example: "GridSize_IDW":150, 
-  - 
+
 * Interpolation
   - Boolean: 1 (=yes) or 0 (=no)
   - Usage: User option to interpolate data. Interpolation is required to perform clustering using some types of zoning resolutions (types b and c, see the field related to clustering resolution types). 
@@ -28,6 +28,49 @@ The following should be included in the file.
    - Integer: 1(=ANN), 2(=Elevation and coordinates)
    - Usage: This option indicates the choosen interpolation method. Two methods are available, 1) Based on Artificial Neural Networks(ANN) and 2) based on the an weighted interpolation based on values, coordinates and elevations of the nearby points. Method 2 is reccomended as it results in lower intermplation erros for most cases, but users can try both methods and assess which one performs better for their particular case. 
   - Example: "Interpolation_Method":2,
+
+### Paths
+* mainProjectFolder
+  - String
+  - Usage: Set the folder where simzoning routines, .zon file and sub folder are located.
+  - Example: "mainProjectFolder": "C:/simzoning/",
+
+* BuildingIDFPath
+  - String
+  - Usage: Set the folder where EnergyPlus models (.idf) are located.
+  - Example: "BuildingIDFPath": "C:/simzoning/IDFS/BRAZIL_IDFS/",
+
+* SimresultsOUTPUTpath
+  - String
+  - Usage: Set the folder containing raw simulation results (time series) in .csv and .txt formats. These files are only needed if the option RunSimulations is set to 0.
+  - Example: "SimresultsOUTPUTpath": "C:/simzoning/Simulations_SZ/",
+
+* Aggregated_Simesults_Path
+  - String
+  - Usage: Folder containing aggregated simulation results
+  - Example: "Aggregated_Simesults_Path":"./simresults/", 
+
+* EPlusPath
+  - String 
+  - Usage: Folder with the EnergyPlus executable.
+  - Example: "EPlusPath": "C:/EnergyPlusV8-7-0/",
+
+* WeatherPath
+  - String 
+  - Usage: Weather folder of the simulation program. Simzoning will copy to these location all files placed by the user in the project subfolder "Weatherfiles".
+  - Example: "WeatherPath": "C:/EnergyPlusV8-7-0/WeatherData/",
+
+### Simulation settings
+* Predifined_listofweatherfiles
+  - Boolean: 1 (=yes) or 0 (=no)
+  - Usage: User option to predefine a list of weather files to run simulations. This list can be defined using prefix. In case there is not a predefined list of weather files, simzoning can identify which weather files fall inside the area of study and near the boundaries.
+  - Example: "Predifined_listofweatherfiles": 1,
+
+* Weatherfiles_searching_prefix
+  - String
+  - Usage: This option is useful when the user has many files in the "Weatherfiles" subfolder and only wants to use some of them which are related to the location under evaluation. This string will be used if the parameter Predifined_listofweatherfiles is set to 1. 
+  - Example: "Weatherfiles_searching_prefix":["*BRA_*.epw"],
+
 
 <table style="table-layout: fixed; width: 40%">
 
@@ -39,63 +82,7 @@ The following should be included in the file.
 </thead>
 <tbody>
 <tr class="even">
-<td colspan="8"><strong>Paths</strong></td>
-</tr>
-<tr class="odd">
-<td colspan="2"><strong>Input data (Variable)</strong></td>
-<td colspan="3"><strong>Example</strong></td>
-<td colspan="3"><strong>Description</strong></td>
-</tr>
-<tr class="even">
-<td colspan="2">"mainProjectFolder":</td>
-<td colspan="3">"C:/simzoning/",</td>
-<td colspan="3">Main folder of simzoning</td>
-</tr>
-<tr class="odd">
-<td colspan="2">"BuildingIDFPath":</td>
-<td colspan="3">"C:/simzoning/IDFS/",</td>
-<td colspan="3">Folder of IDFs used for simulation</td>
-</tr>
-<tr class="even">
-<td colspan="2">"SimresultsOUTPUTpath":</td>
-<td colspan="3">"C:/simzoning/Simulations_SZ/",</td>
-<td colspan="3">Folder containing simulation results in .csv format and
-.txt format</td>
-</tr>
-<tr class="odd">
-<td colspan="2">"Aggregated_Simesults_Path":"</td>
-<td colspan="3">"C:/simzoning/simresults/",</td>
-<td colspan="3">Folder containing aggregated simulation results</td>
-</tr>
-<tr class="even">
-<td colspan="2">"EPlusPath":</td>
-<td colspan="3">"C:/EnergyPlusV8-7-0/",</td>
-<td colspan="3">EnergyPlus folder</td>
-</tr>
-<tr class="odd">
-<td colspan="2">"WeatherPath"</td>
-<td colspan="3">e.g. "C:/EnergyPlusV8-7-0/WeatherData/",</td>
-<td colspan="3">Weather folder of the simulation program</td>
-</tr>
-<tr class="even">
 <td colspan="8"><strong>Simulation settings</strong></td>
-</tr>
-<tr class="odd">
-<td colspan="2">"Predifined_listofweatherfiles":</td>
-<td colspan="3">(1=yes), (0=no)</td>
-<td colspan="3">User option to predefine a list of weather files to run
-simulations. This list can be defined using prefix. In case there is not
-a predefined list of weather files, the program can identify which
-weather files fall inside the area of study and near the
-boundaries.</td>
-</tr>
-<tr class="even">
-<td colspan="2">"Weatherfiles_searching_prefix":</td>
-<td colspan="3"><p>["*_ SC_*.epw","*_SP_*.epw",</p>
-<p>"*_RS_*.epw","*_PR_*.epw"],</p></td>
-<td colspan="3">This option is useful when the user knows the weather
-files available for the area of study, and will be used if the
-Predifined_listofweatherfiles=1</td>
 </tr>
 <tr class="odd">
 <td colspan="2">"WeatherSource":</td>
