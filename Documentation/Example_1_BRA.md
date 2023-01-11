@@ -11,12 +11,11 @@
 |                        |   File          |   Location               |
 |------------------------|-----------------|--------------------------|
 | 1.  Input file         | BRA_RGS.zon     | simzoning\\              |
-| 2.  Shape file of the<br>States of Florida, <br> Georgia, and <br> Tennessee | BRA_RGS.shp     | simzoning\GISfiles\\AreaOfStudy\\               |
+| 2.  Shape file of the<br>State of Rio Grabde do Sul | BRA_RGS.shp     | simzoning\GISfiles\\AreaOfStudy\\               |
 | 3.  Weather files of <br> the area of <br> study and <br> surroundings | 35 .EPW files   | simzoning\\Weatherfiles\\                        |
 | 4.  Idf files          | ModelHVAC.idf <br> ModelNV.idf  | simzoning\\IDFs\\BRAZIL_IDFS\\                   |
-| 5.  EnergyPlus Version | 8-7-0           |                          |
-| 6.  Alternative method <br> for comparison| DegreeDays_Brazil.shp <br> GT_Brazil.shp         | simzoning\\GISfiles\CZ_Methods_Comparison\\     |
-| 7.  File containing coordinates <br> of Brazilian <br> municipalities  | MunicipiosBrasil.csv           | simzoning\\              |
+| 5.  Alternative method <br> for comparison| DegreeDays_Brazil.shp <br> GT_Brazil.shp         | simzoning\\GISfiles\CZ_Methods_Comparison\\     |
+| 6.  File containing coordinates <br> of Brazilian <br> municipalities  | MunicipiosBrasil.csv           | simzoning\\              |
 
 3.  **Steps**
 
