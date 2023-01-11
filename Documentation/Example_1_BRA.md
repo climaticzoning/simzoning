@@ -1,7 +1,3 @@
-> **To run these example, MATLABR2022b, Deep Learning Toolbox, Mapping
-> Toolbox, Matlab Report Generator, Statistic and Machine Learning
-> Toolbox, and the EnergyPlus Version 8.7 are required.**
-
 1.  **Example 1 Brazil**
 * Zoning the state of Rio Grande do Sul, in Brazil.
 * All settings are included in the file BRA_RGS.zon.
