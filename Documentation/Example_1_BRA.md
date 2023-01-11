@@ -1,3 +1,6 @@
+**EnergyPlus Version 8.3 is required.**
+
+
 1.  **Example 1 Brazil**
 * Zoning the state of Rio Grande do Sul, in Brazil.
 * All settings are included in the file BRA_RGS.zon.
