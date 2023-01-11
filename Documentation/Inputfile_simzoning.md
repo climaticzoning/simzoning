@@ -2,16 +2,16 @@ Input parameters for the zoning processes and location of necessary files are de
 
 The following fields can be described in this file.
 
-<table>
+<table style="table-layout: fixed; width: 60%">
 <colgroup>
 <col style="width: 1%" />
-<col style="width: 27%" />
+<col style="width: 20%" />
 <col style="width: 1%" />
 <col style="width: 3%" />
 <col style="width: 28%" />
 <col style="width: 0%" />
 <col style="width: 2%" />
-<col style="width: 31%" />
+<col style="width: 38%" />
 <col style="width: 1%" />
 <col style="width: 2%" />
 </colgroup>
@@ -193,8 +193,8 @@ multiple simulations in parallel to reduce computation time.</td>
 </tr>
 <tr class="odd">
 <td colspan="2">"PerformanceIndicator":</td>
-<td colspan="3">["Cooling", "Heating", "MGR" "Overheating","Cold
-discomfort"],</td>
+<td colspan="3">["Cooling", "Heating", "MGR" "Overheating",
+"Cold discomfort"],</td>
 <td colspan="3">Performance indicators used for clustering</td>
 <td></td>
 <td></td>
@@ -225,7 +225,7 @@ indicators</td>
 </tr>
 <tr class="odd">
 <td
-colspan="2">"Building_Zones_considered_for_PerformanceIndex_calculation":</td>
+colspan="2" style="word-wrap: break-word">"Building_Zones_considered_for_ PerformanceIndex_calculation":</td>
 <td colspan="3">["R1","R2","LIVINGKITCH"],</td>
 <td colspan="3">The name of the building’s zones used to calculate
 performance requiring hourly values(e.g. Thermal comfort, MGR). (These
@@ -236,7 +236,8 @@ reports ).</td>
 </tr>
 <tr class="even">
 <td colspan="2">Building_Zones_occupation_Schedule</td>
-<td colspan="3">[SCH_OCUP_DORM, SCH_OCUP_DORM, SCH_OCUP_SALA]</td>
+<td colspan="3">[SCH_OCUP_DORM, SCH_OCUP_DORM, 
+SCH_OCUP_SALA]</td>
 <td colspan="3">The name of the schedule of each room used to calculate
 performance. They should follow the same order of building zones
 considered for performance calculation.</td>
@@ -379,7 +380,7 @@ the data using the shapefile of the area of study.</td>
 <td></td>
 </tr>
 <tr class="even">
-<td colspan="2">"AlternativeMethod_for_comparison":</td>
+<td colspan="2">"AlternativeMethod_ for_comparison":</td>
 <td colspan="3">(1=yes), (0=no)</td>
 <td colspan="3">Option to use an alternative method to compare
 clustering results using the MPMA index.</td>
@@ -398,36 +399,36 @@ numeric value to identify climatic zones.</p></td>
 <td></td>
 </tr>
 <tr class="even">
-<td colspan="10"><strong>Area of study</strong></td>
+<td colspan="8"><strong>Area of study</strong></td>
 </tr>
 <tr class="odd">
-<td colspan="10"></td>
+<td colspan="8"></td>
 </tr>
 <tr class="even">
-<td colspan="4">"AreaofStudyShapefile_Path":</td>
+<td colspan="2">"AreaofStudyShapefile_Path":</td>
 <td colspan="3">"./GISfiles/AreaOfStudy/",</td>
 <td colspan="3">Folder containing the Shape file of the area of
 study</td>
 </tr>
 <tr class="odd">
-<td colspan="4">"ShapeFileName_AreaofStudy":</td>
+<td colspan="2">"ShapeFileName_AreaofStudy":</td>
 <td colspan="3">"RS_SC_PR_SP.SHP",</td>
 <td colspan="3">Name of the shape file containing the limits of the area
 of study.</td>
 </tr>
 <tr class="even">
-<td colspan="4">"Elevation_file":</td>
+<td colspan="2">"Elevation_file":</td>
 <td colspan="3">"topografia1_ProjectRaster2.tif",</td>
 <td colspan="3">Tiff file containing elevation data covering the area of
 study. Tiff files with projection data: WGS_1984_World_Mercator have
 been tested.</td>
 </tr>
 <tr class="odd">
-<td colspan="10"><strong>Fonts, size of points (plotted in
+<td colspan="8"><strong>Fonts, size of points (plotted in
 maps)</strong></td>
 </tr>
 <tr class="even">
-<td colspan="4"><p>"sizeofpoints":</p>
+<td colspan="2"><p>"sizeofpoints":</p>
 <p>"sizeofpointsHDM":</p>
 <p>"TitlefontSize":</p>
 <p>"TextFontSize":</p>
@@ -439,7 +440,7 @@ maps)</strong></td>
 legends of figures. As well as the size of points in maps.</td>
 </tr>
 <tr class="odd">
-<td colspan="4"></td>
+<td colspan="2"></td>
 <td colspan="3"></td>
 <td colspan="3"></td>
 </tr>
