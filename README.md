@@ -13,7 +13,7 @@ SimZoning requires the following applications.
 Users must provide the following data to this application:
   - Energy simulation models in the EnergyPlus format .idf
   - Weather data in the format .epw
-  - Shape file of the area subject to zoning in the format .shp
+  - Shape file of the area subject to zoning in the format .shp 
   
 ### Optional input data
 Simzoning can compare the performance of its zoning with other predefined alternative(s) available to the user. SimZoning calculates the MPMA validation metrics for all zoning options and produce reports comparing the results. The user should provide shape files of the alternative zoning options.
