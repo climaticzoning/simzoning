@@ -4,10 +4,16 @@ Toolbox for climatic zoning for building energy purposes.
 ### Scope
 SimZoning provides a set of routines for the development and validation of performance-based climatic zoning.
 
-### Dependancies
-SimZoning requires the following applications.
+### Pre-compiled release
+The easiest way to use SimZoning is to download the pre-compiled Release available on this GitHub page. See instructions there on how to set the program.
+
+### Source code ependancies
+If you want to run SimZoning directly from the sourcecode, it requires the following applications.
   - MATLABR2022b, and the tolboxes: Deep Learning, Mapping, Matlab Report Generator, Statistic and Machine Learning, 
-  - EnergyPlus in a version compatible with the .idf files adopted by the user.
+  
+### Dependancies
+SimZoning relies on energy simulation data to understand how climatic variables affect buildinsg, allowing the combined assessment of all climatic variables and providing means to understand the weight of each variable in the zoning process. The source code can be modified to use any building nergy simulation program. The curent version provides support to EnergyPlus, so this program must be available in the computer runing SimZoning.
+  - EnergyPlus is required (use a version compatible with the .idf files adopted by the user).
 
 ### Input data required
 Users must provide the following data to this application:
@@ -30,11 +36,16 @@ SimZoning can intermpolate sparse simulation results to predefined locations (e.
   - extensive automatic reports providing extensive documentation to stakeholder and facilitate quality assurance of every step of the process.
   - support to comparison with other zoning proposals by calculating MPMA based on shape files of other zoning proposals.
 
-### Running SimZoning
-On Matlab, go to the root folder of simzoning and start a new zoning analysis using:
+### Running SimZoning from the pre-comliped executable release
+**From Windows command line:**
+Go to the root folder of simzoning and start a new zoning analysis using:
+
 ```
 simzoning inputfilename.zon
 ```
+
+**From sourcecode:**
+On Matlab, go to the root folder of simzoning and start a new zoning analysis using the same command described above. Matlab will run SimZoning as a matlab function. 
 
 ### Documentation
 The structure of the input file and available options are described on Documentation/Inputfile_simzoning.md
