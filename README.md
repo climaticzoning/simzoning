@@ -7,7 +7,7 @@ SimZoning provides a set of routines for the development and validation of perfo
 ### Pre-compiled release
 The easiest way to use SimZoning is to download the pre-compiled Release available on this GitHub page. See instructions there on how to set the program.
 
-### Source code ependancies
+### Source code dependancies
 If you want to run SimZoning directly from the sourcecode, it requires the following applications.
   - MATLABR2022b, and the tolboxes: Deep Learning, Mapping, Matlab Report Generator, Statistic and Machine Learning, 
   
