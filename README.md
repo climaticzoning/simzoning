@@ -12,7 +12,7 @@ If you want to run SimZoning directly from the sourcecode, it requires the follo
   - MATLABR2022b, and the tolboxes: Deep Learning, Mapping, Matlab Report Generator, Statistic and Machine Learning, 
   
 ### Dependancies
-SimZoning relies on energy simulation data to understand how climatic variables affect buildinsg, allowing the combined assessment of all climatic variables and providing means to understand the weight of each variable in the zoning process. The source code can be modified to use any building nergy simulation program. The curent version provides support to EnergyPlus, so this program must be available in the computer runing SimZoning.
+SimZoning relies on energy simulation data to understand how climatic variables affect buildinsg, allowing the combined assessment of all climatic variables and providing means to understand the weight of each variable in the zoning process. The source code can be modified to use any building energy simulation program. The curent version provides support to EnergyPlus, so this program must be available in the computer runing SimZoning.
   - EnergyPlus is required (use a version compatible with the .idf files adopted by the user).
 
 ### Input data required
