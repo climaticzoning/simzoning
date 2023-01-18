@@ -5,7 +5,7 @@ Toolbox for climatic zoning for building energy purposes.
 SimZoning provides a set of routines for the development and validation of performance-based climatic zoning.
 
 ### Pre-compiled release
-The easiest way to use SimZoning is to download the pre-compiled Release available on this GitHub page. See instructions there on how to set the program.
+The easiest way to use SimZoning is by downloading the pre-compiled Release available on this GitHub page. See instructions there on how to set the program.
 
 ### Source code dependancies
 If you want to run SimZoning directly from the sourcecode, it requires the following applications.
@@ -19,7 +19,7 @@ SimZoning relies on energy simulation data to understand how climatic variables 
 Users must provide the following data to this application:
   - Energy simulation models in the EnergyPlus format .idf
   - Weather data in the format .epw
-  - Shape file of the area subject to zoning in the format .shp 
+  - Shape file of the area subject to zoning in the format .shp
   
 ### Optional input data
 Simzoning can compare the performance of its zoning with other predefined alternative(s) available to the user. SimZoning calculates the MPMA validation metrics for all zoning options and produce reports comparing the results. The user should provide shape files of the alternative zoning options.
