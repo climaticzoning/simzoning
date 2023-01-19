@@ -37,6 +37,7 @@ rpt.OutputPath=CaseStudy_output_folder;
 % Style of figures
 imgStyle = {ScaleToFit(true)};
 
+%
 % makeDOMcompilable
 % title
 titlepg = TitlePage;
