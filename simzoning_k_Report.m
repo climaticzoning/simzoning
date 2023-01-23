@@ -1,5 +1,5 @@
 % This script generates a Report containing the main outputs of simzoning
-% Loading mput variables
+% Loading imput variables
 load ImputVariables.mat
 % loading table with weather data
 load weatherfilestable
@@ -7,6 +7,7 @@ load weatherfilestable
 weatherfilestable=Formattable(weatherfilestable);
 
 %%Report settings
+makeDOMCompilable()
 import mlreportgen.dom.*
 import mlreportgen.report.*
 
@@ -37,8 +38,6 @@ rpt.OutputPath=CaseStudy_output_folder;
 % Style of figures
 imgStyle = {ScaleToFit(true)};
 
-%
-% makeDOMcompilable
 % title
 titlepg = TitlePage;
 titlepg.Title = 'Performance based Climatic zoning';
