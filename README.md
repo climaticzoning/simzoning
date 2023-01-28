@@ -7,12 +7,12 @@ SimZoning provides a set of routines for the development and validation of perfo
 ### Pre-compiled release
 The easiest way to use SimZoning is by downloading the pre-compiled Release available on this GitHub page. See instructions there on how to set the program.
 
-### Source code dependancies
-If you want to run SimZoning directly from the sourcecode, it requires the following applications.
-  - MATLABR2022b, and the tolboxes: Deep Learning, Mapping, Matlab Report Generator, Statistic and Machine Learning, 
+### Source code dependencies
+If you want to run SimZoning directly from the source code, it requires the following applications.
+  - MATLABR2022b, and the toolboxes: Deep Learning, Mapping, Matlab Report Generator, Statistic and Machine Learning. 
   
-### Dependancies
-SimZoning relies on energy simulation data to understand how climatic variables affect buildinsg, allowing the combined assessment of all climatic variables and providing means to understand the weight of each variable in the zoning process. The source code can be modified to use any building energy simulation program. The curent version provides support to EnergyPlus, so this program must be available in the computer runing SimZoning.
+### Dependencies
+SimZoning relies on energy simulation data to understand how climatic variables affect buildings, allowing the combined assessment of all climatic variables and providing means to understand the weight of each variable in the zoning process. The source code can be modified to use any building energy simulation program. The current version provides support to EnergyPlus, so this program must be available in the computer running SimZoning.
   - EnergyPlus is required (use a version compatible with the .idf files adopted by the user).
 
 ### Input data required
@@ -20,11 +20,12 @@ Users must provide the following data to this application:
   - Energy simulation models in the EnergyPlus format .idf
   - Weather data in the format .epw
   - Shape file of the area subject to zoning in the format .shp
+  - Tiff file containing elevation data covering the area of study. (Only Tiff files with projection data: WGS_1984_World_Mercator have been tested.)
   
 ### Optional input data
 Simzoning can compare the performance of its zoning with other predefined alternative(s) available to the user. SimZoning calculates the MPMA validation metrics for all zoning options and produce reports comparing the results. The user should provide shape files of the alternative zoning options.
 
-SimZoning can intermpolate sparse simulation results to predefined locations (e.g. to cities with no weather data). The user must provide a list of locations to be used in the interpolation.
+SimZoning can interpolate sparse simulation results to predefined locations (e.g. to cities with no weather data). The user must provide a list of locations to be used in the interpolation.
 
 ### Features
   - capability to handle an arbitrary number of energy simulations models and weather files. 
@@ -36,7 +37,7 @@ SimZoning can intermpolate sparse simulation results to predefined locations (e.
   - extensive automatic reports providing extensive documentation to stakeholder and facilitate quality assurance of every step of the process.
   - support to comparison with other zoning proposals by calculating MPMA based on shape files of other zoning proposals.
 
-### Running SimZoning from the pre-comliped executable release
+### Running SimZoning from the pre-compiled executable release
 **From Windows command line:**
 Go to the root folder of simzoning and start a new zoning analysis using:
 
@@ -61,7 +62,7 @@ Three examples of input files (and respective auxiliary folders and files) are p
 These examples are described in the Documentation folder. Note that different examples require different EnergyPlus versions.
 Samples of output reports for each example are available in the Outputs folder.
 
-All weather files, simulation models and GIS shape files required to run these exemples are provided with this source code.
+All weather files, simulation models and GIS shape files required to run these examples are provided with this source code.
 
 **Disclaimer:**
 
