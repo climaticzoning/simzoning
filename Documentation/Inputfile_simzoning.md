@@ -29,7 +29,7 @@ The following fields should be included in the file:
 
 * Interpolation_Method
    - Integer: 1(=ANN), 2(=Elevation and coordinates)
-   - Usage: This option indicates the choosen interpolation method. Two methods are available, 1) Based on Artificial Neural Networks(ANN) and 2) based on the an weighted interpolation based on values, coordinates and elevations of the nearby points. Method 2 is reccomended as it results in lower intermplation erros for most cases, but users can try both methods and assess which one performs better for their particular case. 
+   - Usage: This option indicates the choosen interpolation method. Two methods are available, 1) Based on Artificial Neural Networks(ANN) and 2) based on the an weighted interpolation based on values, coordinates and elevations of the nearby points. Method 2 is reccomended as it results in lower interpolation erros for most cases, but users can try both methods and assess which one performs better for their particular case. 
   - Example: "Interpolation_Method":2,
 
 ### Paths
