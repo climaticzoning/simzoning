@@ -22,7 +22,7 @@ Folders containing files provided by the user.
 <li><p>Weather files</p></li>
 </ol></td>
 <td>Simzoning\Weatherfiles</td>
-<td>.epw</td>
+<td>.EPW</td>
 </tr>
 <tr class="even">
 <td><ol start="2" type="1">
@@ -36,16 +36,16 @@ Folders containing files provided by the user.
 <li><p>GIS files (Shape files and tiff files)</p></li>
 </ol></td>
 <td>simzoning\GISfiles\AreaOfStudy</td>
-<td>.shp,</td>
+<td>.SHP</td>
 </tr>
 <tr class="even">
 <td>simzoning\GISfiles\CZ_Methods_Comparison</td>
-<td>.shp this file must contain a feature named “zone”, with numerical
-values indicating the zone number</td>
+<td>.SHP this file must contain a feature named “zone”, with numerical
+values indicating the zone number. </td>
 </tr>
 <tr class="odd">
 <td>simzoning\GISfiles\Elevation</td>
-<td>.tiff files with elevation data</td>
+<td>.TIFF files with elevation data. TIFF files with projection data: WGS_1984_World_Mercator have been tested.</td>
 </tr>
 <tr class="even">
 <td><ol start="4" type="1">
