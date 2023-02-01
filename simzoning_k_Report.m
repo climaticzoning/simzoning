@@ -35,7 +35,6 @@ fprintf(nor);
 
 % Report name and format
 rpt = Report(NameofReport,'pdf');
-open(rpt)
 % output folder
 rpt.OutputPath=CaseStudy_output_folder;
 
@@ -93,6 +92,8 @@ cd (mainProjectFolder)
 % adding section to chapter
 add(ch1,sec1);
 fprintf('Section 1 successfully added to Chapter 1 \n');
+fprintf('Adding Chapter 1 to report \n');
+append(rpt,ch1)
 
 %% CHAPTER II Climatic zoning methods for comparison
 if AlternativeMethod_for_comparison==1
@@ -127,6 +128,8 @@ if AlternativeMethod_for_comparison==1
     %Adding section to chapter
     fprintf('Adding first section to Chapter 2 \n');
     add(ch2,sec1)
+    fprintf('Adding Chapter 2 to report \n');
+append(rpt,ch2)
 end
 
 %% %%  CHAPTER III  results
@@ -174,7 +177,8 @@ end
 cd (mainProjectFolder)
 fprintf('Adding first section to Chapter 3 \n');
 add(ch3,sec1)
-
+fprintf('Adding Chapter 3 to report \n');
+append(rpt,ch3)
 
 %% Chapter V Interpolation
 if Interpolation==1
@@ -239,6 +243,8 @@ if Interpolation==1
      add(ch4,sec1)
      fprintf('Adding second section to Chapter 4 \n');
      add(ch4,sec2)
+     fprintf('Adding Chapter 4 to report \n');
+     append(rpt,ch4)
   end
 
 %% Chapter VI Performance maps of ramdom models for Quality Control
@@ -273,7 +279,8 @@ else
 end
 fprintf('Adding first section to Chapter 5 \n');
 add(ch5,sec1)
-
+fprintf('Adding Chapter 5 to report \n');
+append(rpt,ch15)
 
 
 %%  %%  CHAPTER VI Climatic boundary conditions
@@ -320,22 +327,10 @@ tbl.Style = [tbl.Style
 add(sec1,tbl)
  fprintf('Section added to chapter \n');
 add(ch6,sec1)
+fprintf('Adding Chapter 6 to report \n');
+append(rpt,ch6)
 %%
 cd (mainProjectFolder)
- fprintf('Adding Chapter 1 to report \n');
-add(rpt,ch1)
-if AlternativeMethod_for_comparison==1
- fprintf('Adding Chapter 2 to report \n');
-add(rpt,ch2)
-end
- fprintf('Adding Chapter 3 to report \n');
-add(rpt,ch3)
- fprintf('Adding Chapter 4 to report \n');
-add(rpt,ch4)
- fprintf('Adding Chapter 5 to report \n');
-add(rpt,ch5)
- fprintf('Adding Chapter 6 to report \n');
-add(rpt,ch6)
 % Close the report (required)
 close(rpt);
 % Display the report (optional)
