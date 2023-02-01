@@ -1,6 +1,7 @@
 function rc = simzoning(input_file_name)
 tic
 % for debugging, keep the first and the last lines of this file commented
+%
 % and use the line below to specify input_file_name (this file should be in
 % the same folder of the source code.
 % input_file_name='brazil1.zon';
