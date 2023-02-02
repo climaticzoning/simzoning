@@ -27,15 +27,14 @@ tic
 clearvars -except  input_file_name  % erase all variables
 % tic % starts a stopwatch timer
 
-version='1.0';
+version='1.0'
 
-
-%create a log file
-% DiaryName = strcat('simzoning_',input_file_name,'.log'); %L: strcat concatenate strings horizontally
-% if exist(DiaryName, 'file')
-%     delete(DiaryName); %L: delete existing log
-% end
-% diary(DiaryName) %L: creates a log of keyboard input and the resulting text output (an ASCII file)
+% create a log file
+DiaryName = strcat('simzoning_',input_file_name,'.log'); %L: strcat concatenate strings horizontally
+if exist(DiaryName, 'file');
+    delete(DiaryName); %L: delete existing log
+end
+diary(DiaryName) %L: creates a log of keyboard input and the resulting text output (an ASCII file)
 
 
 %!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
@@ -43,48 +42,41 @@ version='1.0';
 % versão 0.1
 %!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
-%% subrotine input
-% clearvars
-% diary on
-% Remove Figures and .csv files from previous runs
-% clearvars
-% diary on
-% Remove Figures and .csv files from previous runs
-dos('rmdir Figures /s/q');
+fprintf('removing folders of previous analysis \n');
 
+if ~exist('Figures', 'dir');
+    dos('rmdir Figures /s/q');
+end
+if ~exist('grid_input', 'dir');
+    dos('rmdir grid_input /s/q');
+end
+if ~exist('simresults','dir');
+    dos('rmdir simresults /s/q');
+end
+
+fprintf('making new directories \n');
 
 mkdir Figures\BoundaryConditions\;
-mkdir Figures\Clusters\
-mkdir Figures\MPMA\
-mkdir Figures\QualityControl\
-mkdir Figures\Interpolation\
-mkdir Figures\CZ_Methods_Comparison\
-dos('rmdir grid_input /s/q')
-dos('rmdir simresults /s/q')
-mkdir Outputs
-% dos('rmdir Simulations_SZ /s/q')
-mkdir grid_input
-mkdir IDFS
-mkdir Simulations_SZ
-mkdir Outputs
-% Read input file
+mkdir Figures\Clusters\;
+mkdir Figures\MPMA\;
+mkdir Figures\QualityControl\;
+mkdir Figures\Interpolation\;
+mkdir Figures\CZ_Methods_Comparison\;
+mkdir Outputs;
 
-%Example 1
-% input_file_name='BRA_RGS.zon';
-% Example 2
-% input_file_name='BRA_South_of_Brazil.zon';
-% example 3
-% input_file_name='BRA_NE.zon';
-%Example 4
-% input_file_name='BRA_Brazil.zon';
-% input_file_name='USA.zon';
+mkdir grid_input;
+mkdir IDFS;
+mkdir Simulations_SZ;
+
+
+fprintf('reading input file\n');
 jsonData = jsondecode(fileread(input_file_name));
 %Main root of the toolbox
 mainProjectFolder=jsonData.mainProjectFolder;
 % Name of the case study
 CaseStudy=jsonData.CaseStudy;
 %Constant variables
-simzoning_constantes
+simzoning_constantes;
 % User option to run simulations
 RunSimulations=jsonData.RunSimulations;
 % User option to interpolate data(1=yes), (0=no)
@@ -269,6 +261,7 @@ mkdir (CaseStudy_output_folder)
 if RunSimulations==1
     cd (mainProjectFolder)
     simzoning_c_MultiCore_Simulation
+     fprintf('Simulations finished \n');
 end
 %% Extraction of simulation results
 
@@ -276,6 +269,7 @@ if Extract_Simresults==1
     cd (mainProjectFolder)
     % Extract Simulation Results
     simzoning_d_ExtractSimResults
+    fprintf('Simulation results extraction completed \n');
 end
 
 %% GRID Generation
@@ -289,6 +283,7 @@ cd (mainProjectFolder)
 %Interpolation using lat, long e alt.
 if Interpolation==1 || Zoning_interpolated_PerfData_IrregularGrid==1 || Zoning_interpolated_PerfData_RegularGrid==1
     simzoning_f_Interpolation
+    fprintf('Interpolation completed \n');
 end
 % Clustering based on the kmeans algorithm
 if Cluster_data==1
@@ -308,20 +303,23 @@ if Zoning_interpolated_PerfData_RegularGrid==1 && Calculate_MPMA==1 && numel(fil
     % grids. In this case, is called by simzoning when CLusters based
     % on interpolated areas is required
     simzoning_i_MPMA_bins
+     fprintf('MPMA calculation finished (bins method)\n');
 end
 if Calculate_MPMA==1
     % MPMA using the centroid method is used alternatively for different
     % clustering resolutions
     cd (mainProjectFolder)
     simzoning_j_MPMA_Centroids
+    fprintf('MPMA calculation finished (Centroids method)\n');
 end
 
 % cd ..
 cd (mainProjectFolder)
 
 %%  Report generation
-
+fprintf('Starting report generation \n');
 simzoning_k_Report
+fprintf('Report generation completed \n');
 %% finish program
 diary off;
 beep;
