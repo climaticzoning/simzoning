@@ -185,6 +185,7 @@ tile = tiledlayout(3,length(PerformanceIndicator));
 % It creates the layout based on the number of Performance indicators to be displayed in the same Figure
 colors=flip(jet(nm+nc));
 l=0;
+warning('off','stats:boxplot:BadObjectType');
 for PI=1:length(PerformanceIndicator)
     nexttile([3 1])
     h=boxplot(E.((4+l)),E.Zone,"ColorGroup",E.Zone,'colors','k');
