@@ -22,6 +22,7 @@
 % EXAMPLE IN THE INPUT .ZON FILE     "Row_heating_cooling":["49","50"],
                                    % "Column_heating_cooling":["3","2"],
 
+                                   
 % - To calculate Mould Growth Risk:
 % a) Name of building zones to be considered (defined by the user)  e.g.  "Building_Zones_considered_for_PerformanceIndex_calculation":["R1","R2","LIVINGKITCH"],
 % b) Occupancy schedules for each building (defined by the user) zone e.g.  "Building_Zones_occupation_Schedule":["ROOM_VENTILATION_SCHEDULE","ROOM_VENTILATION_SCHEDULE","LIVING OCCUPANCY SCHEDULE"],
