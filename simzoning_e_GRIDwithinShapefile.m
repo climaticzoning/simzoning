@@ -52,6 +52,7 @@ if Zoning_interpolated_PerfData_IrregularGrid==1
     % folder that contains the TIFF file with elevation data
     cd GISfiles/Elevation/
     %Extraction of Altitude data from a Tiff file for each coordinates
+    warning('off','map:removing:pixcenters')
     alt=geotiffinterp(Elevation_file,latcoord,loncoord);
     %% Figure for quality assurance
     % it loads performance data to compare the grid and the original
@@ -112,6 +113,7 @@ if Zoning_interpolated_PerfData_RegularGrid==1
     cd (mainProjectFolder)% Import the data
     cd GISfiles/Elevation/
     % this line of the code extract elevation data for each coordinate
+    warning('off','map:removing:pixcenters')
     alt=geotiffinterp(Elevation_file,latcoord,loncoord);
     % geotiffinterp is a third-party function (Chad Greene (2022)).
     % geotiffinterp (https://www.mathworks.com/matlabcentral/fileexchange/47899-geotiffinterp), MATLAB Central File Exchange. Retrieved November 2, 2022.

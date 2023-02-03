@@ -172,11 +172,12 @@ for j=jmin:jmax
             end
         end
         cd ..
-    end
-   
-   
+    end 
+    expr=strcat(num2str(j/jmax*100),' percent of simulations concluded /n');
+    fprintf(expr)
+
 end
-fclose ("all")
+fclose ("all");
 %Delete weather files in the Eplus Weather Folder
 cd(WeatherPath)
 for j=1:numel(filesepw)

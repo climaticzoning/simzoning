@@ -197,7 +197,7 @@ set(gca,'xticklabel',ZoningAlternative_bins_name,'TickLabelInterpreter','none')%
 ylabel('MPMA using bin method (%)')
 title('MPMA for each clustering alternative (Bin method)',Interpreter="none")
 subtitle(ZoningAlternatives_name_label,Interpreter="none")
-print('MPMA for each clustering alternative Bin method', '-dpng')
+print('MPMA for each clustering alternative Bin method', '-dpng');
 close all force;
 
 

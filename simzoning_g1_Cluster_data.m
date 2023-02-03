@@ -187,6 +187,7 @@ colors=flip(jet(nm+nc));
 l=0;
 for PI=1:length(PerformanceIndicator)
     nexttile([3 1])
+    warning('off','stats:boxplot:BadObjectType')
     h=boxplot(E.((4+l)),E.Zone,"ColorGroup",E.Zone,'colors','k');
     l=l+1;
     title_f=char(strcat(PerformanceIndicator{PI}));

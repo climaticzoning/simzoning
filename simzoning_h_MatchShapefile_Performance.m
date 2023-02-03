@@ -93,6 +93,7 @@ for m=1:numel(Name_of_AlternativeMethod_for_comparison)
     % It creates the layout based on the number of Performance indicators to be displayed in the same Figure
     colors2=flip(jet(numel(Zones)));
     l=0;
+     warning('off','stats:boxplot:BadObjectType');
     for PI=1:length(PerformanceIndicator)
         nexttile([3 1])
         h=boxplot(ZP.((4+l)),ZP.Zone,"ColorGroup",ZP.Zone,'colors','k');
