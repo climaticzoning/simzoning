@@ -1,8 +1,8 @@
 
-% This script 
+% This script
 % 1. Reads latitude, longitude and altitude of epws files.
-% 2. It plots weather files on a map 
-% If required, 
+% 2. It plots weather files on a map
+% If required,
 % 3. It identifies the epw files inside the area of study and near the limits of a shapefile
 
 % REQUIRES
@@ -49,6 +49,8 @@ cd (mainProjectFolder)
 % This folder contais a shapefile with the limits of the area under study
 cd (AreaofStudypath)
 % Reads the shape file
+warning('off','map:shapefile:missingDBF')
+warning('off','map:shapefile:buildingIndexFromSHP')
 S=shaperead(ShapeFileName_AreaofStudy);
 % Shape file coordinates
 polygon1_long = S(1).X;     % it finds all the X-Coordinates of points in the polygon
@@ -56,6 +58,7 @@ polygon1_lat= S(1).Y;   % it finds all the Y-Coordinates of points in the polygo
 
 %If required the shapefile is used to identify the matching weather files
 if Predifined_listofweatherfiles==0
+    fprintf('Identifying EPW files located in the area of study \n');
     %Offset polygon in degrees
     bufwith=1; % Width offset
     [latburf,longburf] = bufferm(polygon1_lat,polygon1_long,bufwith);
@@ -85,6 +88,7 @@ if Predifined_listofweatherfiles==0
     cd(mainProjectFolder)
     %Saving results
     save('Epws_torunSIm.mat','Epws_torunSIm')
+    fprintf('List of EPW files successfully saved \n')
     % Plotting data for quality assurance
     f1 = figure('visible','off');
     % Polygon of the area of study
@@ -112,8 +116,9 @@ if Predifined_listofweatherfiles==0
     set(gcf, 'Position', get(0, 'Screensize'));
     print('portada', '-dpng', '-r0')
     close all force;
-    
-% If the weather files are preselected by the user, this scrip plots the
+    fprintf('Map containing EPWs generated \n');
+
+    % If the weather files are preselected by the user, this scrip plots the
     % data
 elseif Predifined_listofweatherfiles==1
     cd(mainProjectFolder)
@@ -124,7 +129,7 @@ elseif Predifined_listofweatherfiles==1
     hold on
     % Selected locations
     geoscatter(LatLongitude(:,1),LatLongitude(:,2),28,'filled','MarkerFaceAlpha',0.7,'DisplayName','Location of weather files used in this study')
-   % Setting legend properties
+    % Setting legend properties
     legend1 = legend;
     set(legend1,'Interpreter','none','FontSize',LabelFontSize);
     % Setting base map
@@ -144,5 +149,6 @@ elseif Predifined_listofweatherfiles==1
     set(gcf, 'Position', get(0, 'Screensize'));
     print('portada', '-dpng', '-r0')
     close all force;
+    fprintf('Map containing EPWs generated \n');
 end
 

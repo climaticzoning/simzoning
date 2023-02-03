@@ -261,7 +261,6 @@ mkdir (CaseStudy_output_folder)
 if RunSimulations==1
     cd (mainProjectFolder)
     simzoning_c_MultiCore_Simulation
-     fprintf('Simulations finished \n');
 end
 %% Extraction of simulation results
 
@@ -288,6 +287,7 @@ end
 % Clustering based on the kmeans algorithm
 if Cluster_data==1
     simzoning_g_Zoning
+     fprintf('Clustering completed \n');
 end
 cd (mainProjectFolder)
 %% Alternative Methods for comparison

@@ -280,7 +280,7 @@ end
 fprintf('Adding first section to Chapter 5 \n');
 add(ch5,sec1)
 fprintf('Adding Chapter 5 to report \n');
-append(rpt,ch15)
+append(rpt,ch5)
 
 
 %%  %%  CHAPTER VI Climatic boundary conditions
