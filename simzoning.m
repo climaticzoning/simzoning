@@ -44,13 +44,14 @@ diary(DiaryName) %L: creates a log of keyboard input and the resulting text outp
 
 fprintf('removing folders of previous analysis \n');
 
-if ~exist('Figures', 'dir');
+delete('*.mat');
+if exist('Figures', 'dir');
     dos('rmdir Figures /s/q');
 end
-if ~exist('grid_input', 'dir');
+if exist('grid_input', 'dir');
     dos('rmdir grid_input /s/q');
 end
-if ~exist('simresults','dir');
+if exist('simresults','dir');
     dos('rmdir simresults /s/q');
 end
 
@@ -62,10 +63,9 @@ mkdir Figures\MPMA\;
 mkdir Figures\QualityControl\;
 mkdir Figures\Interpolation\;
 mkdir Figures\CZ_Methods_Comparison\;
-mkdir Outputs;
 
+mkdir Outputs;
 mkdir grid_input;
-mkdir IDFS;
 mkdir Simulations_SZ;
 
 
@@ -158,8 +158,6 @@ else
     filesepw=dir(fullfile('*.epw'));
     filesepwl=struct2table(filesepw);
     Epws_torunSIm=filesepwl.name;
-    % list of selected weather files for simulation
-    save('Epws_torunSIm.mat','Epws_torunSIm')
     cd ..
     % If the list of weather files is not provided by the user, this script
     % identifies the weather files contained in a region using a shape
@@ -253,9 +251,7 @@ Number_of_subzones=reshape(jsonData.Number_of_subzones,1,[]);
 %% Simulation parameters
 cd (mainProjectFolder)
 save ImputVariables.mat
-% Path for outputs
-CaseStudy_output_folder=char(strcat('./Outputs/',CaseStudy,'_CaseStudy'));
-mkdir (CaseStudy_output_folder)
+
 
 %%  SIMULATIONS
 if RunSimulations==1
@@ -320,6 +316,7 @@ cd (mainProjectFolder)
 fprintf('Starting report generation \n');
 simzoning_k_Report
 fprintf('Report generation completed \n');
+
 %% finish program
 diary off;
 beep;

@@ -52,7 +52,7 @@ if Zoning_interpolated_PerfData_IrregularGrid==1
     % folder that contains the TIFF file with elevation data
     cd GISfiles/Elevation/
     %Extraction of Altitude data from a Tiff file for each coordinates
-    warning('off','map:removing:pixcenters')
+    warning('off','map:removing:pixcenters');
     alt=geotiffinterp(Elevation_file,latcoord,loncoord);
     %% Figure for quality assurance
     % it loads performance data to compare the grid and the original
@@ -67,13 +67,13 @@ if Zoning_interpolated_PerfData_IrregularGrid==1
     geoscatter(Table4cluster.LAT,Table4cluster.LON,30,'*k','DisplayName','Original locations')
     legend1 = legend;
     set(legend1,'Interpreter','none','FontSize',LabelFontSize);
-    set(gcf, 'Position', get(0, 'Screensize'))
+    set(gcf, 'Position', get(0, 'Screensize'));
     title('Municipalities with elevation data and original locations of weather files used for simulation','FontSize',TitlefontSize)
-    ylabel(colorbar,'Elevation (masl)','FontSize',LabelFontSize)
-    cd (mainProjectFolder)
-    cd (OutputFolderFigures_Interpolation)
+    ylabel(colorbar,'Elevation (masl)','FontSize',LabelFontSize);
+    cd (mainProjectFolder);
+    cd (OutputFolderFigures_Interpolation);
     % Save figure
-    print('Irregular grid elevation', '-dpng')
+    print('Irregular grid elevation', '-dpng');
     close all force;
     %% saving data into mat file and csv file
     cd(mainProjectFolder)
@@ -84,6 +84,7 @@ if Zoning_interpolated_PerfData_IrregularGrid==1
 
 end
 if Zoning_interpolated_PerfData_RegularGrid==1
+    fprintf('Generating a regular grid for the area under study \n');
     cd (mainProjectFolder)
     % This folder contais a shapefile with the limits of the area under study
     cd (AreaofStudypath)
@@ -145,6 +146,7 @@ if Zoning_interpolated_PerfData_RegularGrid==1
     data=table(latcoord, loncoord,alt,'VariableNames',{'LAT','LON','ALT'});
     save('RegularGrid.mat','data')
     writetable(data,'lat-lon-alt-RegularGrid.csv')
+    fprintf('Regular grid matrix saved \n');
 end
 
 %% Third_party local function
