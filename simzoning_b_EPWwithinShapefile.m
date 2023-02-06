@@ -48,6 +48,7 @@ LatLongitude=cell2mat(LatLongitude(:,1:2));
 cd (mainProjectFolder)
 % This folder contais a shapefile with the limits of the area under study
 cd (AreaofStudypath)
+fprintf('Reading the shape file of the area under study \n');
 % Reads the shape file
 warning('off','map:shapefile:missingDBF')
 warning('off','map:shapefile:buildingIndexFromSHP')
@@ -74,6 +75,7 @@ if Predifined_listofweatherfiles==0
     idx1 = find(inon(:));                                        % Linear Indices Of 1inon’ Points
     latcoord = lat(idx1);                                        % Coordinates Of 1inon’ Points
     loncoord = lon(idx1);
+
     % Calculation of the points that fall near the boundaries (Offset area)
     [in,on] = inpolygon(lat,lon,latburf,longburf);        % Logical Matrix
     inon = in | on;                                             % Combine ‘in’ And ‘on’
@@ -85,40 +87,49 @@ if Predifined_listofweatherfiles==0
     % Coordinates of selected EPWs
     lat_selectedEPWs=[lat(idx1);lat(idx2)];
     lon_selectedEPWs=[lon(idx1);lon(idx2)];
-    cd(mainProjectFolder)
-    %Saving results
-    save('Epws_torunSIm.mat','Epws_torunSIm')
-    fprintf('List of EPW files successfully saved \n')
-    % Plotting data for quality assurance
-    f1 = figure('visible','off');
-    % Polygon of the area of study
-    geoplot(polygon1_lat,polygon1_long,'b:','LineWidth',1.5,'DisplayName','Area of study')
-    hold on
-    % Selected locations
-    geoscatter(lat_selectedEPWs, lon_selectedEPWs,'filled','MarkerFaceAlpha',0.7,'DisplayName','Location of weather files used in this study')
-    % Setting legend properties
-    legend1 = legend;
-    set(legend1,'Interpreter','none','FontSize',LabelFontSize);
-    % Setting base map
-    geobasemap('topographic')
-    %Size of the figure
-    set(gcf, 'Position', get(0, 'Screensize'));
-    % Saving the figure in .PNG format
-    cd Figures/BoundaryConditions
-    NameofFig=char(strcat(CaseStudy, {' '},'Selected weather files for simulation'));
-    title(NameofFig,FontSize=TitlefontSize, Interpreter="none")
-    print(NameofFig, '-dpng', '-r0')
-    close all force
-    %%  Figure for the Report Front Page
-    f1 = figure('visible','off');
-    geoplot(polygon1_lat,polygon1_long,'k:','LineWidth',1)
-    geobasemap('streets')
-    set(gcf, 'Position', get(0, 'Screensize'));
-    print('portada', '-dpng', '-r0')
-    close all force;
-    fprintf('Map containing EPWs generated \n');
+    %
 
-    % If the weather files are preselected by the user, this scrip plots the
+    if numel(Epws_torunSIm)==0;
+        fprintf('No EPW file encountered inside and near the boundaries of the area of study  \n');
+        warning('Make sure to select the proper Shape file and the corresponding weather files to run simzoning ');
+    else
+        Expression=char(strcat(num2str(numel(Epws_torunSIm)),' EPWs identified inside and/or near the boundaries of the area of study \n'));
+        fprintf(Expression);
+        cd(mainProjectFolder)
+        %Saving results
+        save('Epws_torunSIm.mat','Epws_torunSIm')
+        fprintf('List of EPW files successfully saved \n')
+        % Plotting data for quality assurance
+        f1 = figure('visible','off');
+        % Polygon of the area of study
+        geoplot(polygon1_lat,polygon1_long,'b:','LineWidth',1.5,'DisplayName','Area of study');
+        hold on;
+        % Selected locations
+        geoscatter(lat_selectedEPWs, lon_selectedEPWs,'filled','MarkerFaceAlpha',0.7,'DisplayName','Location of weather files used in this study')
+        % Setting legend properties
+        legend1 = legend;
+        set(legend1,'Interpreter','none','FontSize',LabelFontSize);
+        % Setting base map
+        geobasemap('topographic')
+        %Size of the figure
+        set(gcf, 'Position', get(0, 'Screensize'));
+        % Saving the figure in .PNG format
+        cd Figures/BoundaryConditions
+        NameofFig=char(strcat(CaseStudy, {' '},'Selected weather files for simulation'));
+        title(NameofFig,FontSize=TitlefontSize, Interpreter="none")
+        print(NameofFig, '-dpng', '-r0')
+        close all force
+        %%  Figure for the Report Front Page
+        f1 = figure('visible','off');
+        geoplot(polygon1_lat,polygon1_long,'k:','LineWidth',1);
+        geobasemap('streets');
+        set(gcf, 'Position', get(0, 'Screensize'));
+        print('portada', '-dpng', '-r0');
+        close all force;
+        fprintf('Map containing EPWs generated \n');
+        % If the weather files are preselected by the user, this scrip plots the
+    end
+
     % data
 elseif Predifined_listofweatherfiles==1
     cd(mainProjectFolder)

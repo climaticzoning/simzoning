@@ -5,8 +5,8 @@
 % in csv format.
 % This script was tested to extract/calculate 5 performance indicators:
 %% Models with HVAC (Using annual data contained in  *ModelName*Table.csv files)
-% 1) Annual Cooling load per area 
-% 2) Annual Heating load per area 
+% 1) Annual Cooling load per area
+% 2) Annual Heating load per area
 %% Natural ventilated models (Using hourly data contained in *ModelName*.csv files )
 % 3) Mould Growth Risk in (Natural Ventilated model) based on %Clarke, J. A., Johnstone, C. M., Kelly, N. J., Mclean, R. C., & Nakhi, A. E. (1997). Development of a Simulation Tool for Mould Growth Prediction in Buildings. Proceedings of the Fifth International IBPSA Conference, August, 343–349.
 % 4) Discomfort hours for cold (adaptive thermal comfort model) (Natural Ventilated model)
@@ -17,23 +17,23 @@
 % - Conditioning_type_tag to differentiate between natural ventilated models and models with active cooling and heating, which is a prefix of the IDF name  (defined by the user) e.g.  "Conditioning_type_tag":["HVAC","NV"],
 
 % - To extract annual cooling and heating load.
-     % a)The number of rows and columns to extract annual cooling, annual
-     % heating from the *Table.csv output file
+% a)The number of rows and columns to extract annual cooling, annual
+% heating from the *Table.csv output file
 % EXAMPLE IN THE INPUT .ZON FILE     "Row_heating_cooling":["49","50"],
-                                   % "Column_heating_cooling":["3","2"],
+% "Column_heating_cooling":["3","2"],
 
 % - To calculate Mould Growth Risk:
 % a) Name of building zones to be considered (defined by the user)  e.g.  "Building_Zones_considered_for_PerformanceIndex_calculation":["R1","R2","LIVINGKITCH"],
 % b) Occupancy schedules for each building (defined by the user) zone e.g.  "Building_Zones_occupation_Schedule":["ROOM_VENTILATION_SCHEDULE","ROOM_VENTILATION_SCHEDULE","LIVING OCCUPANCY SCHEDULE"],
 % c) Zone OperativeTemperature (hourly data)for each building zone  %
-% (default output variable defined in the RVI file) 
+% (default output variable defined in the RVI file)
 % d) Zone Air Relative Humidity (hourly data) for each building zone  %
-% (default output variable defined in the RVI file) 
+% (default output variable defined in the RVI file)
 
 % - to calculate Discomfort hours:
-% a) Zone OperativeTemperature (hourly data)(default output variable defined in the RVI file) 
+% a) Zone OperativeTemperature (hourly data)(default output variable defined in the RVI file)
 % b) Zone Thermal Comfort ASHRAE 55 Adaptive Model Temperature (hourly
-% data) (if calculated in the model, this variable is included in the RVI file) 
+% data) (if calculated in the model, this variable is included in the RVI file)
 
 % This script also extracts, conditioned area, the Weather file used for
 % simulation, and coordinates (Latitude and longitude).
@@ -89,6 +89,7 @@ NVModelIndex = ~cellfun(@isempty,regexp(idfs_names.name,Conditioning_type_tag{2}
 
 
 %% This part of the script extracts conditioned Building area to calculate Energy demand per square meter.
+fprintf('Getting area of the model \n');
 for m=1:mmax
     models_Name{m}=allfiles(m).name(1:end-9);
     if HVACModelIndex(m)==1
@@ -112,7 +113,7 @@ for m=1:mmax
 end
 
 %% Extraction of Cooling and Heating annual load
-
+fprintf('Extracting annual values of cooling and heating \n')
 cd ..
 % Loop of climates
 for e=1:numel(subFolders)
@@ -142,7 +143,7 @@ opts.EmptyLineRule = "read";
 % Specify variable properties
 opts = setvaropts(opts, ["Var1", "EnergyPlus"], "WhitespaceRule", "preserve");
 opts = setvaropts(opts, ["Var1", "EnergyPlus"], "EmptyFieldRule", "auto");
-
+fprintf('Extracting weather files used for each model \n');
 for e=1:numel(subFolders)
     cd (subFolders(e).name)
     for m=1
@@ -158,7 +159,7 @@ ListofEPW=cellfun(@(x) table2cell(x),NameofEPW);
 for e=1:numel(subFolders)
     cd (subFolders(e).name)
     % Loop of models
-    for m=1:mmax 
+    for m=1:mmax
         fin=fopen(allfiles(m).name);
         clear line;
         counter1=0;
@@ -194,7 +195,7 @@ for e=1:numel(subFolders)
 
         end
         %% Overheating, Cold discomfort and MGR calculation
-        % Reading .csv files contaning hourly data required to calculate Mould Growth Risk for occupied hours and Thermal comfort for occupied hours. 
+        % Reading .csv files contaning hourly data required to calculate Mould Growth Risk for occupied hours and Thermal comfort for occupied hours.
         filename=char(strcat(allfiles(m).name(1:end-9),'.csv'));
         % Only calculted for natural ventilated models
         if NVModelIndex(m)==1
@@ -220,7 +221,7 @@ for e=1:numel(subFolders)
             % Finding the column of Comfort temperature
             ConfortTemp_Index=~cellfun(@isempty, regexp(RU.Properties.VariableNames,'AdaptiveModelTemperature','ignorecase'));
             Comforttemp=RU(:, ConfortTemp_Index);
-        
+
             for p=1:numel(BuildingZones_considered_for_PerformanceIndex_calculation)
                 % it match the schedule of each zone with the corresponding
                 % Operative temperature and Relative Humidity
@@ -274,12 +275,14 @@ if  exist('MGR', 'var')
     MouldRisk=MouldRisk*100;
     MGR_Matrix=MouldRisk(:,NVModelIndex);
     PerformanceMatr{3}=MouldRisk(:,NVModelIndex);
+     fprintf('Mould growth risk hours successfully calculated \n');
 end
 if exist('ConfortTemp_Index', 'var') && sum(ConfortTemp_Index)>0
     Colddiscomf_Matrix=ColdDiscom_M(:,NVModelIndex);
     Overheating_Matrix=Overheating_M(:,NVModelIndex);
     PerformanceMatr{4}=Overheating_Matrix;
     PerformanceMatr{5}=Colddiscomf_Matrix;
+    fprintf('Discomfort hours successfully calculated \n');
 end
 
 % Defining the folder to store results
@@ -314,6 +317,7 @@ for j=1:sum(HVACModelIndex)
     %  Data stored in .csv format: Lat, lon, alt and performance (a matrix per model for MPMA calculation using the Bin method)
     writetable(matx,Matrix_modelsName)
     movefile (Matrix_modelsName, destination,'f')
+    fprintf('Aggregated Simulation results saved \n')
 end
 
 
@@ -360,7 +364,7 @@ for j=1:numel(PerformanceIndicator)
     set(legend1,'Interpreter','none','FontSize',LabelFontSize);
     Ylabel=char(strcat(PerformanceIndicator{j},PerformanceIndicator_Units{j}));
     ylabel(colorbar,Ylabel,'FontSize',LabelFontSize);
-    geobasemap('topographic')
+    geobasemap('topographic');
     set(gcf, 'Position', get(0, 'Screensize'));
     NameofFig=char(strcat(PerformanceIndicator{j}, {' '},'Performance map of a ramdom model'));
     title(NameofFig,FontSize=TitlefontSize)
@@ -368,8 +372,8 @@ for j=1:numel(PerformanceIndicator)
     cd (OutputFolderFigures_QualityControl)
     print(NameofFig, '-dpng', '-r0')
     close all force
-    end
-
+end
+fprintf('Figures for quality control saved \n');
 cd (mainProjectFolder)
 
 

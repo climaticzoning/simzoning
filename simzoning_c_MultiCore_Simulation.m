@@ -1,4 +1,4 @@
-%% run simulations using energyPLus and multicore processors 
+%% run simulations using energyPLus and multicore processors
 %inputs: .idfs files, weather files (.EPW)
 
 % Load imput variables
@@ -53,7 +53,7 @@ cd Weatherfiles
 % Copying temporarily selected Weather files for simulation from the simzoning/weatherfiles folder to the Eplus Weather Folder
 for j=1:numel(Epws_torunSIm)
     file=Epws_torunSIm{j};
-copyfile(file, WeatherPath,'f')
+    copyfile(file, WeatherPath,'f')
 end
 cd(mainProjectFolder)
 %% Creation of .RVI (Report Variable Input) file to obtain custom output files (.CSV) from EnergyPlus
@@ -65,7 +65,7 @@ cd(mainProjectFolder)
 % Variables needed to calculate selected Performance indicators for each building zone defined by the user.
 B={',Zone Operative Temperature',',Zone Air Relative Humidity',',Zone Thermal Comfort ASHRAE 55 Adaptive Model Temperature'};
 A={'eplusout.eso';'eplusout.csv';'Site Outdoor Air Drybulb Temperature'};
-% Schedules  
+% Schedules
 for j=1:numel(Building_Zones_occupation)
     schedule_r{j}=char(strcat(Building_Zones_occupation{j,1},',Schedule Value' ));
 end
@@ -107,11 +107,14 @@ destination=SimresultsOUTPUTpath;
 
 % Folders of simulations
 cd(SimresultsOUTPUTpath)
-if jmax>numel(Epws_torunSIm)
+if jmax>numel(Epws_torunSIm) && ~isempty(Epws_torunSIm)
     jmax=numel(Epws_torunSIm);
+else
+    warning('No weather files properly selected to run simulations');
 end
 % weather files defined by the user in the input file
-for j=jmin:jmax 
+for j=jmin:jmax
+
     % A folder for each climate file is created with the name of the
     % weather file
     folderclima=char(strcat('mkdir Clima',Epws_torunSIm{j}(1:end-4)));
@@ -136,20 +139,20 @@ for j=jmin:jmax
         s = fgetl(fin);
         % The weather file is written in the batch file subtituting the expression edited by the user 'EPWfile_to_be_substituted' in the RunDirMulti2.bat file
         s = strrep(s, 'EPWfile_to_be_substituted', clima);
-%         % The number of processors to run multicore simulations is written in the batch file subtituting the expression edited by the user 'Num_of_cores' in the RunDirMulti2.bat file
+        %         % The number of processors to run multicore simulations is written in the batch file subtituting the expression edited by the user 'Num_of_cores' in the RunDirMulti2.bat file
         fprintf(fout,'%s\n',s);
         disp(s);
     end
     fclose(fin);
     fclose(fout);
     fclose('all');
-%     %%
+    %     %%
     pdest=char(strcat('Clima',Epws_torunSIm{j}(1:end-4)));
     movefile('RunDirMulti2.bat',pdest);% the bacth file is moved into the folder where simulations take place
     movefile('*.idf', pdest);% .IDfs files are moved to the same folder
     movefile('*.rvi', pdest);% .RVI files are moved to the same folder
     cd(pdest)
-  
+
 
     dos('RunDirMulti2.bat')% parallel simulations are executed
     t = tic();
@@ -172,7 +175,7 @@ for j=jmin:jmax
             end
         end
         cd ..
-    end 
+    end
     expr=strcat(num2str(j/jmax*100),' percent of simulations concluded /n');
     fprintf(expr)
 
@@ -180,11 +183,13 @@ end
 fclose ("all");
 %Delete weather files in the Eplus Weather Folder
 cd(WeatherPath)
-for j=1:numel(filesepw)
-    file=filesepw(j).name;
- 
-delete(file)
+if numel(Epws_torunSIm)>0
+    for j=1:numel(Epws_torunSIm)
+        file=Epws_torunSIm(j);
+        delete(file)
+    end
 end
+
 cd(mainProjectFolder)
 
 
