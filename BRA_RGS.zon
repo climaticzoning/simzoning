@@ -4,6 +4,7 @@
         "GridSize_IDW":60,  
         "Interpolation":1,
         "Interpolation_Method":1,
+	"Report_generation":1,
    
         
         "mainProjectFolder": "C:/simzoning/",
