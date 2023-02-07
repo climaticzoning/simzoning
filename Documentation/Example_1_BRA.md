@@ -14,7 +14,7 @@
 | 3.  Weather files of <br> the area of <br> study and <br> surroundings | 35 .EPW files   | simzoning\\Weatherfiles\\                        |
 | 4.  Idf files          | ModelHVAC.idf <br> ModelNV.idf  | simzoning\\IDFs\\BRAZIL_IDFS\\                   |
 | 5.  Alternative method <br> for comparison| DegreeDays_Brazil.shp <br> GT_Brazil.shp         | simzoning\\GISfiles\CZ_Methods_Comparison\\     |
-| 6.  File containing coordinates <br> of Brazilian <br> municipalities  | MunicipiosBrasil.csv           | simzoning\\              |
+| 6.  File containing coordinates <br> of Brazilian <br> municipalities  | MunicipiosBrasil.csv           | simzoning\\grid_input\\              |
 
 3.  **Steps**
 
