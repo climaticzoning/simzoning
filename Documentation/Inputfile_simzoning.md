@@ -88,6 +88,17 @@ The following fields should be included in the file:
   - Boolean: 1 (=yes) or 0 (=no)
   - Usage: User option to run simulations with all-weather files, or just a defined number. This option is usefull for testing.
   - Example: "run_simulations_with_all_climates": 1,
+   
+ *  jmin
+    - Integer
+    - Usage: User option to run simulations with specific weather files from a list. jmin is a number indicating the first weather file used for simulation from all selected weather files, and Maxi_Num_of_climates_for_simulation is a number indicating the last one. This option  will be used if the parameter run_simulations_with_all_climates is set to 0. It is usefull to complete time-consuming simulations and to perform tests.
+    - Example: "jmin": 1,
+  
+  *  Maxi_Num_of_climates_for_simulation
+     - Integer
+     - Usage: User option to run simulations with specific weather files from a list. Maxi_Num_of_climates_for_simulation is a number indicating the last weather file from a list used for simulation. This option  will be used if the parameter run_simulations_with_all_climates is set to 0. It is usefull to complete time-consuming simulations and to perform tests.
+     - Example: "Maxi_Num_of_climates_for_simulation": 5,
+     
 <table style="table-layout: fixed; width: 40%">
 
 <thead>
@@ -99,20 +110,6 @@ The following fields should be included in the file:
 <tbody>
 <tr class="even">
 <td colspan="8"><strong>Simulation settings</strong></td>
-</tr>
-
-
-<tr class="odd">
-<td colspan="2">"jmin":</td>
-<td colspan="3">1,</td>
-<td colspan="3">First weather file for simulation(from a list)
-adopted.</td>
-</tr>
-<tr class="even">
-<td colspan="2">"Maxi_Num_of_climates_for_simulation":</td>
-<td colspan="3">10,</td>
-<td colspan="3">Last weather file selected to run simulations(from a
-list).</td>
 </tr>
 <tr class="odd">
 <td colspan="2">"Num_of_cores":</td>
