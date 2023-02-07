@@ -4,6 +4,7 @@
         "GridSize_IDW":150,  
         "Interpolation":1,
         "Interpolation_Method":2,
+	"Report_generation":1,
                 
         "mainProjectFolder": "C:/simzoning/",
 	  "BuildingIDFPath": "C:/simzoning/IDFS/BRAZIL_IDFS/",
