@@ -85,7 +85,7 @@
 </blockquote></li>
 </ol></td>
 <td>MunicipiosBrasil.csv</td>
-<td>simzoning\</td>
+<td>simzoning\grid_input\</td>
 </tr>
 </tbody>
 </table>
