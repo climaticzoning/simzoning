@@ -51,7 +51,7 @@ values indicating the zone number. </td>
 <td><ol start="4" type="1">
 <li><p>Irregular grid</p></li>
 </ol></td>
-<td>simzoning\</td>
+<td>simzoning\grid_input\</td>
 <td>.csv</td>
 </tr>
 </tbody>
