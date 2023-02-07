@@ -31,6 +31,11 @@ The following fields should be included in the file:
    - Integer: 1(=ANN), 2(=Elevation and coordinates)
    - Usage: This option indicates the choosen interpolation method. Two methods are available, 1) Based on Artificial Neural Networks(ANN) and 2) based on the an weighted interpolation based on values, coordinates and elevations of the nearby points. Method 2 is reccomended as it results in lower interpolation erros for most cases, but users can try both methods and assess which one performs better for their particular case. 
   - Example: "Interpolation_Method":2,
+  
+* Report_generation
+   - Boolean: 1 (=yes) or 0 (=no)
+   - Usage: User option to generate a .PDF report for each case study. Available with the Matlab Report Generator. 
+   - Example: "Report_generation":1,
 
 ### Paths
 * mainProjectFolder
@@ -74,7 +79,15 @@ The following fields should be included in the file:
   - Usage: This option is useful when the user has many files in the "Weatherfiles" subfolder and only wants to use some of them which are related to the location under evaluation. This string will be used if the parameter Predifined_listofweatherfiles is set to 1. 
   - Example: "Weatherfiles_searching_prefix":["*BRA_*.epw"],
 
-
+* WeatherSource
+  - String
+  - This option indicates the weather files type used in the study.
+  - Example:  "WeatherSource":"TMYx20072021",
+  
+* run_simulations_with_all_climates
+  - Boolean: 1 (=yes) or 0 (=no)
+  - Usage: User option to run simulations with all-weather files, or just a defined number. This option is usefull for testing.
+  - Example: "run_simulations_with_all_climates": 1,
 <table style="table-layout: fixed; width: 40%">
 
 <thead>
@@ -87,18 +100,8 @@ The following fields should be included in the file:
 <tr class="even">
 <td colspan="8"><strong>Simulation settings</strong></td>
 </tr>
-<tr class="odd">
-<td colspan="2">"WeatherSource":</td>
-<td colspan="3">e.g. "TMYx20072021",</td>
-<td colspan="3">This option indicates the weather files type used in the
-study</td>
-</tr>
-<tr class="even">
-<td colspan="2">"run_simulations_with_all_climates":</td>
-<td colspan="3">(1=yes), (0=no)</td>
-<td colspan="3">User option to run simulations with all-weather
-files</td>
-</tr>
+
+
 <tr class="odd">
 <td colspan="2">"jmin":</td>
 <td colspan="3">1,</td>
