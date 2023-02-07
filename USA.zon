@@ -4,13 +4,14 @@
         "GridSize_IDW":100,  
         "Interpolation":1,
         "Interpolation_Method":2,
+	"Report_generation":0,
            
         "mainProjectFolder": "C:/simzoning/",
-	  "BuildingIDFPath": "C:/simzoning/IDFS/USA_IDFS/",
+	"BuildingIDFPath": "C:/simzoning/IDFS/USA_IDFS/",
         "SimresultsOUTPUTpath": "C:/simzoning/Simulations_SZ/",
         "Aggregated_Simesults_Path":"./simresults/", 
        
-	  "EPlusPath": "C:/EnergyPlusV8-3-0/",
+	 "EPlusPath": "C:/EnergyPlusV8-3-0/",
         "WeatherPath": "C:/EnergyPlusV8-3-0/WeatherData/",
         
         "Predifined_listofweatherfiles": 1,
