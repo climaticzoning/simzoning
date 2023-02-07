@@ -16,7 +16,7 @@ if ZoningAlternatives(2,1)>0
     grid=2;  z=2;
     cd grid_input\
     clear d data
-    load gridforInterp_muni.mat % Grid with municipalities
+    load lat-lon-alt-grid_muni.mat % Grid with municipalities
     cd ..
     cd simresults
     %     load agreggated simulation results
@@ -35,10 +35,10 @@ if ZoningAlternatives(2,1)>0
         Perf_model_variables=Table4cluster.Properties.VariableNames(5:end);
         Interp_matrix_ANN=[grid_mpma_a_coord,performance_grid];
         Table4clusters_Interpolated=array2table( Interp_matrix_ANN,'VariableNames',{'LAT','LON','ALT',Perf_model_variables{:}});
-        % Reorder matrix 
+        % Reorder matrix
         Table4clusters_Interpolated = movevars(Table4clusters_Interpolated, "ALT", "Before", "LAT");
         % saving outputs in the simresults folder
-        cd simresults\
+        cd Interpolated_data\
         save('Table4clusters_Interp_Municipalities.mat',"Table4clusters_Interpolated")
         cd ..
         % Interpolation method 2, based on COORDINATES, ALT, LAT AND LON
@@ -48,18 +48,20 @@ if ZoningAlternatives(2,1)>0
         simzoning_f1_weighttopo
     end
 end
-%% Resolution b) Regular grid 
+%% Resolution b) Regular grid
 clearvars
 load ImputVariables
 % Zoning based on regular grid
 if ZoningAlternatives(3,1)>0
     grid=3;
-    cd simresults\
+    cd grid_input\
     z=3;
     clear d
     clear data
-    load RegularGrid.mat % Regular grid
+    load lat-lon-alt-RegularGrid.mat % Regular grid
     %     load agreggated simulation results
+    cd ..
+    cd simresults\
     load  (Aggregatesimmresults)
     % input data for ANN Interpolation method
     performance_file='Simresults.csv';
@@ -79,7 +81,7 @@ if ZoningAlternatives(3,1)>0
         % SAVING DATA AS A TABLE
         Table4clusters_Interpolated=array2table( Interp_matrix_ANN,'VariableNames',{'LAT','LON','ALT',Perf_model_variables{:}});
         Table4clusters_Interpolated = movevars(Table4clusters_Interpolated, "ALT", "Before", "LAT");
-        cd simresults\
+        cd Interpolated_data\
         % DATA STORED IN THE SIMRESULT FOLDER
         save('Table4clusters_Interp_Regular_Grid.mat',"Table4clusters_Interpolated")
         cd ..

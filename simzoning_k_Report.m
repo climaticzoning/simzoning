@@ -72,7 +72,7 @@ text.FontFamilyName='Trebuchet';
 text.Style = {OuterMargin("0pt", "0pt","15pt","15pt")};
 add(sec1,text)
 
-fprintf('Reading and adding images of clustering results\n'); 
+fprintf('Reading and adding images of clustering results\n');
 S=dir(fullfile('*.png '));
 S=natsortfiles(S);
 if numel(S)==0
@@ -85,7 +85,7 @@ else
         fprintf(fignumber);
     end
     fprintf('All clustering figures successfully added \n');
- end
+end
 
 cd (mainProjectFolder)
 
@@ -108,28 +108,28 @@ if AlternativeMethod_for_comparison==1
     % Section title
     sec1.Title = Text('Alternative methods for comparison');
     cd Figures\CZ_Methods_Comparison\
-    
+
     fprintf('Reading and adding figures of alternative methods for comparison\n');
     S=dir(fullfile('*.png '));
     S=natsortfiles(S);
-  if numel(S)==0
-    fprintf('No image found in the folder\n');
-  else
-     for y=1:length(S)
-        caption=S(y).name(1:end-4);
-        add(sec1,FormalImage('Image',which(S(y).name),'Caption',caption));
-        fignumber=char(strcat( 'Figure',{' '},num2str(y),'/',num2str(length(S)), {' '},'successfully added\n'));
-        fprintf(fignumber);
-      end
-       fprintf('All alternative methods for comparison figures successfully added \n');
-   end
-   
+    if numel(S)==0
+        fprintf('No image found in the folder\n');
+    else
+        for y=1:length(S)
+            caption=S(y).name(1:end-4);
+            add(sec1,FormalImage('Image',which(S(y).name),'Caption',caption));
+            fignumber=char(strcat( 'Figure',{' '},num2str(y),'/',num2str(length(S)), {' '},'successfully added\n'));
+            fprintf(fignumber);
+        end
+        fprintf('All alternative methods for comparison figures successfully added \n');
+    end
+
     cd (mainProjectFolder)
     %Adding section to chapter
     fprintf('Adding first section to Chapter 2 \n');
     add(ch2,sec1)
     fprintf('Adding Chapter 2 to report \n');
-append(rpt,ch2)
+    append(rpt,ch2)
 end
 
 %% %%  CHAPTER III  results
@@ -152,13 +152,13 @@ S=dir(fullfile('*.png '));
 S=natsortfiles(S);
 if numel(S)==0
     fprintf('No image found in the folder\n');
-  else
-     for y=1:length(S)
-    caption=S(y).name(1:end-4);
-    add(sec1,FormalImage('Image',which(S(y).name),'Caption',caption));
-    fignumber=char(strcat( 'Figure',{' '},num2str(y),'/',num2str(length(S)), {' '},'successfully added\n'));
-     fprintf(fignumber);
-   end
+else
+    for y=1:length(S)
+        caption=S(y).name(1:end-4);
+        add(sec1,FormalImage('Image',which(S(y).name),'Caption',caption));
+        fignumber=char(strcat( 'Figure',{' '},num2str(y),'/',num2str(length(S)), {' '},'successfully added\n'));
+        fprintf(fignumber);
+    end
     fprintf('All MPMA figures successfully added \n');
 end
 % If there MPMA using the centroid method is equal to zero, this expression
@@ -182,13 +182,13 @@ append(rpt,ch3)
 
 %% Chapter V Interpolation
 if Interpolation==1
-  fprintf('- Setting Interpolation Chapter \n');
+    fprintf('- Setting Interpolation Chapter \n');
     if interpolation_method==1
         InterpolationMethod=char(strcat('Interpolation using ANN method'))
     elseif interpolation_method==2
         InterpolationMethod=char(strcat('Interpolation using Weighted interpolation of nearby points'))
     end
-    
+
     cd Figures/Interpolation
     ch4 = Chapter;
     ch4.Title=Text(InterpolationMethod);
@@ -206,17 +206,17 @@ if Interpolation==1
     S=natsortfiles(S);
     fprintf('Reading and adding figures of grids used for interpolation \n');
 
-   if numel(S)==0
-      fprintf('No image found in the folder\n');
-   else
-     for y=1:length(S)
-      caption=S(y).name(1:end-4);
-      add(sec1,FormalImage('Image',which(S(y).name),'Caption',caption));
-      fignumber=char(strcat( 'Figure',{' '},num2str(y),'/',num2str(length(S)), {' '},'successfully added\n'));
-      fprintf(fignumber);
-     end
-    fprintf('All figures successfully added \n');
-   end
+    if numel(S)==0
+        fprintf('No image found in the folder\n');
+    else
+        for y=1:length(S)
+            caption=S(y).name(1:end-4);
+            add(sec1,FormalImage('Image',which(S(y).name),'Caption',caption));
+            fignumber=char(strcat( 'Figure',{' '},num2str(y),'/',num2str(length(S)), {' '},'successfully added\n'));
+            fprintf(fignumber);
+        end
+        fprintf('All figures successfully added \n');
+    end
     fprintf('Adding Section: Interpolated performance maps \n');
     sec2 = Section;
     sec2.Title = Text('Interpolated performance maps');
@@ -224,28 +224,28 @@ if Interpolation==1
     sec2.Title.FontSize='12pt';
     sec2.Title.Bold='True';
     sec2.Title.Color='black';
-       
+
     fprintf('Reading and adding Performance maps figures \n');
-     S=dir(fullfile('*Perform*.png '));
-     S=natsortfiles(S);
-     if numel(S)==0
-         fprintf('No image found in the folder\n');
-     else
-         for y=1:length(S)
-             caption=S(y).name(1:end-4);
-             add(sec2,FormalImage('Image',which(S(y).name),'Caption',caption));
-             fignumber=char(strcat( 'Figure',{' '},num2str(y),'/',num2str(length(S)), {' '},'successfully added\n'));
-             fprintf(fignumber);
-         end
-         fprintf('All Performance maps figures successfully added \n');
-     end
-     fprintf('Adding first section to Chapter 4 \n');
-     add(ch4,sec1)
-     fprintf('Adding second section to Chapter 4 \n');
-     add(ch4,sec2)
-     fprintf('Adding Chapter 4 to report \n');
-     append(rpt,ch4)
-  end
+    S=dir(fullfile('*Perform*.png '));
+    S=natsortfiles(S);
+    if numel(S)==0
+        fprintf('No image found in the folder\n');
+    else
+        for y=1:length(S)
+            caption=S(y).name(1:end-4);
+            add(sec2,FormalImage('Image',which(S(y).name),'Caption',caption));
+            fignumber=char(strcat( 'Figure',{' '},num2str(y),'/',num2str(length(S)), {' '},'successfully added\n'));
+            fprintf(fignumber);
+        end
+        fprintf('All Performance maps figures successfully added \n');
+    end
+    fprintf('Adding first section to Chapter 4 \n');
+    add(ch4,sec1)
+    fprintf('Adding second section to Chapter 4 \n');
+    add(ch4,sec2)
+    fprintf('Adding Chapter 4 to report \n');
+    append(rpt,ch4)
+end
 
 %% Chapter VI Performance maps of ramdom models for Quality Control
 cd ..
@@ -323,9 +323,9 @@ tbl.TableEntriesStyle = {FontFamily('Calibri'), FontSize('11')};
 tbl.Style = [tbl.Style
     {NumberFormat("%1.3f"),...
     Width("100%")}];
-    fprintf('Table added to section \n');
+fprintf('Table added to section \n');
 add(sec1,tbl)
- fprintf('Section added to chapter \n');
+fprintf('Section added to chapter \n');
 add(ch6,sec1)
 fprintf('Adding Chapter 6 to report \n');
 append(rpt,ch6)
@@ -335,16 +335,6 @@ cd (mainProjectFolder)
 close(rpt);
 % Display the report (optional)
 rptview(rpt);
-
-fprintf('Moving all Figures and tables with simulation aggregated results to the output/CaseStudy folder \n');
-movefile('*Zon*.csv',  CaseStudy_output_f,'f')
-movefile('Simresults.csv',  CaseStudy_output_f,'f')
-if exist('gridresults','file')
-    movefile("gridresults\",CaseStudy_output_f,'f')
-end
-movefile("simresults\",CaseStudy_output_f,'f')
-movefile("Figures\",CaseStudy_output_f,'f')
-
 fprintf('Report finished \n');
 
 

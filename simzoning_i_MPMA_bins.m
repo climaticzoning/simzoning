@@ -9,12 +9,12 @@ bin_number=20;
 %%HARDCODED: replace by variable  (it should scan folder with results
 % number of result files, one per simulaiton model
 
-dos('rmdir gridresults /s/q');
-mkdir gridresults;
+dos('rmdir MPMA_results /s/q');
+mkdir MPMA_results;
 %%
 load ImputVariables.mat
 
-if AlternativeMethod_for_comparison==1;
+if AlternativeMethod_for_comparison==1
     ZoningAlternative_bins_name=horzcat( 'Regular_Grid',  Name_of_AlternativeMethod_for_comparison' ) ;
 else
     ZoningAlternative_bins_name={'Regular_Grid'};
@@ -38,7 +38,7 @@ for z=1:numel(ZoningAlternative_bins_name)
     grid_mpma_a_coord=grid_mpma_a(:,1:3);
 
     for PMA_calc = 1:number_of_simulationmodels
-        messmodel=strcat('calculating PMA for simulation model: ',num2str(PMA_calc));
+        messmodel=char(strcat('Calculating PMA for simulation model: ',num2str(PMA_calc),{' '}, ZoningAlternative_bins_name{z},'\n'));
         fprintf(messmodel)
         %% load performance data for this model
         % the file should have the first line with headers
@@ -145,8 +145,8 @@ for z=1:numel(ZoningAlternative_bins_name)
 
         %% calculate PMA
         pma(PMA_calc)=pmaabs/totpoints;
-        pma2{z}=  pma
-
+        pma2{z}=  pma;
+        
         %% calculate PMA check ignoring NaN
         totpoints1=0;
         for allocation_point = 1:gridsize %each point in the grid
@@ -165,15 +165,15 @@ for z=1:numel(ZoningAlternative_bins_name)
         MPMA_frequencyvalue{z}=sum(pma)/number_of_simulationmodels;
 
         %% write output
-        fileID = fopen(strcat('./gridresults/MPMA.txt'),'wt');
+        fileID = fopen(strcat('./MPMA_results/MPMA.txt'),'wt');
         fprintf(fileID,'%4.2f',MPMA_frequencyvalue{z});
 
         fclose(fileID);
 
-        save(strcat('./gridresults/MPMA_frequency_data.mat')); %L: cria arquivo com variáveis do workspace
+        save(strcat('./MPMA_results/MPMA_frequency_data.mat')); %L: cria arquivo com variáveis do workspace
         pma1=transpose(pma1);
 
-        csvwrite(strcat('./gridresults/PMA.csv'),pma1);
+        csvwrite(strcat('./MPMA_results/PMA.csv'),pma1);
     end
 end
 
