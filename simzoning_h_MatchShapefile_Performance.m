@@ -5,8 +5,8 @@
 % named 'zone' using numerical data
 
 % Import performance data
-cd simresults\
-load ('C:\simzoning\simresults\Table4clusters_Interp_Regular_Grid.mat')
+cd Interpolated_data\
+load ('Table4clusters_Interp_Regular_Grid.mat')
 cd ..
 cd GISfiles\CZ_Methods_Comparison\
 e=1;
@@ -86,14 +86,14 @@ for m=1:numel(Name_of_AlternativeMethod_for_comparison)
     cd Figures\CZ_Methods_Comparison\
     % saving fifure
     print(Name_of_AlternativeMethod_for_comparison{m}, '-dpng')
-    fclose all
+    fclose all;
     % Plotting boxplots
     f = figure('visible','off');
     tile = tiledlayout(3,length(PerformanceIndicator));
     % It creates the layout based on the number of Performance indicators to be displayed in the same Figure
     colors2=flip(jet(numel(Zones)));
     l=0;
-     warning('off','stats:boxplot:BadObjectType');
+    warning('off','stats:boxplot:BadObjectType');
     for PI=1:length(PerformanceIndicator)
         nexttile([3 1])
         h=boxplot(ZP.((4+l)),ZP.Zone,"ColorGroup",ZP.Zone,'colors','k');
@@ -113,7 +113,7 @@ for m=1:numel(Name_of_AlternativeMethod_for_comparison)
     NameofFig=char(strcat(Name_of_AlternativeMethod_for_comparison{m},{' '},'zoning boxplot'));
 
     print(NameofFig, '-dpng')
-    fclose all
+    fclose all;
 
     cd (mainProjectFolder)
     cd GISfiles\CZ_Methods_Comparison\

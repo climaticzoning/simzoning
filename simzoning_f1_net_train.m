@@ -1,10 +1,8 @@
 function [performance_grid]=simzoning_f1_net_train(performance_file,grid_mpma_a_coord,save_pi_interpolatedmap)
 
 %% remove folder with previous interpolated result
-dos ('rmdir gridresults /s /q');
-mkdir gridresults;
 
-save_pi_interpolatedmap=1;
+save_pi_interpolatedmap=0;
 % grid_mpma_a_coord=table2array(data);
 %convert lines in collumns
 grid_mpma_a_coord=transpose(grid_mpma_a_coord);
@@ -174,27 +172,23 @@ if save_pi_interpolatedmap==1
 
     for piplot=1:number_of_pi
         f6 = figure('visible','off');
-        scatter(grid_mpma_a_coord(:,2),grid_mpma_a_coord(:,1),11,performance_grid(:,piplot),'filled');
+        geoscatter(grid_mpma_a_coord(:,1),grid_mpma_a_coord(:,2),11,performance_grid(:,piplot),'filled');
         % colormap(map)
         colorbar
-        ylabel('longitude');
-        xlabel('latitude');
         simfile=performance_file(14:strlength(performance_file)-4);
         title(strcat('interpolated ann - file: ',simfile,' performance indicator: ',' ',num2str(piplot)));
-        saveas(gcf,strcat('./gridresults/interp_ann_',simfile(),'_perfindicator_',num2str(piplot),'.jpg'),'jpg');
+        saveas(gcf,strcat('./Figures/Interpolation/interp_ann_',simfile(),'_perfindicator_',num2str(piplot),'.jpg'),'jpg');
         close(f6);
     end
 
     for piplot=1:number_of_pi
         % plot the performance
         f1 = figure('visible','off');
-        scatter(coorda(:,2),coorda(:,1),15,pi5a(:,piplot),'filled');
+        geoscatter(coorda(:,1),coorda(:,2),15,pi5a(:,piplot),'filled');
         colorbar
-        ylabel('longitude');
-        xlabel('latitude');
         simfile=performance_file(14:strlength(performance_file)-4);
         title(strcat('simdata - file: ',simfile,' performance indicator: ',' ',num2str(piplot)));
-        saveas(gcf,strcat('./gridresults/simdata_',simfile(),'_perfindicator_',num2str(piplot),'.jpg'),'jpg');
+        saveas(gcf,strcat('./Figures/Interpolation/simdata_',simfile(),'_perfindicator_',num2str(piplot),'.jpg'),'jpg');
         close(f1);
 
     end
@@ -202,170 +196,3 @@ if save_pi_interpolatedmap==1
 end
 
 end
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-%
-% %maps
-% %% need to transpose to plot...
-% % plot the performance
-% f1 = figure('Name','cooling as simulated');
-% scatter(grid_mpma_a_coord(:,2),grid_mpma_a_coord(:,1),15,performance_grid(:,1),'filled')
-% colorbar
-%
-% % plot the performance
-% f3 = figure('Name','cooling as simulated');
-% scatter(coorda(:,2),coorda(:,1),15,pi5a(:,1),'filled')
-% colorbar
-%
-
-
-
-
-
-
-
-
-%
-%
-%
-%
-%
-% [net,tr] = train(net,inputs,targets);
-%
-%
-% [trainP,valP,testP,trainInd,valInd,testInd] = dividerand(p);
-% [trainInd,valInd,testInd] = dividerand(296,0.9,0.9,0.01)
-%
-% net.divideFcn = 'divideind';
-% net.divideParam.trainInd = trainInd;
-% net.divideParam.valInd = valInd;
-% net.divideParam.testInd= testInd;
-%
-%
-% %exemplo de output para uma dada longitude, latitude e altitude
-% output = net([-70;-8;400])
-%
-% % just to check, calculate the output for all used input (training,
-% % validaiton and testing data)
-% %takes a bit of time.
-%
-% outputexisting = net(inputs);
-% f16 = figure('Name','ann performance');
-% plotregression(targets,outputexisting,'Regression')
-% movegui(f16,[100 400]);
-%
-%
-%
-%
-%
-%
-%
-% %for outputann = 1:size(x)
-% %outputexisting(outputann) = net([x(outputann);y(outputann);z(outputann)]);
-% %end
-%
-% %calculate the differences between performance in the inputfile and
-% %performance calculated by the ann (transpose because one array is a line
-% %and the other is a collumn...)
-% diff=p-transpose(outputexisting);
-%
-% f2 = figure('Name','ann predictions');
-% plot(outputexisting)
-% movegui(f2,[300 0]);
-%
-% f31 = figure('Name','difference between ann and simulations');
-% plot(diff);
-% movegui(f31,[500 0]);
-% disp('diferenca maxima entre simulacao e ann')
-% max(diff)
-% disp('diferenca minima entre simulacao e ann')
-% min(diff)
-%
-% % import data for all municipios
-% municipios = readtable('muni.xlsx','Range','d2:F5566');
-% municipios.Properties.VariableNames([1 2 3]) = {'long' 'lat' 'alt'};
-%
-% %copy table of municipios to allow manupulation without deleting the
-% %original
-% municipios1=municipios;
-%
-% %delete rows out of ann range
-% toDelete = municipios1.long < minlong;
-% municipios1(toDelete,:) = [];
-% clear toDelete
-%
-% toDelete = municipios1.long > maxlong;
-% municipios1(toDelete,:) = [];
-% clear toDelete
-%
-% toDelete = municipios1.lat < minlat;
-% municipios1(toDelete,:) = [];
-% clear toDelete
-%
-% toDelete = municipios1.lat > maxlat;
-% municipios1(toDelete,:) = [];
-% clear toDelete
-%
-% toDelete = municipios1.alt < minalt;
-% municipios1(toDelete,:) = [];
-% clear toDelete
-%
-% toDelete = municipios1.alt > maxalt;
-% municipios1(toDelete,:) = [];
-% clear toDelete
-%
-% % copy data from tabel into arrays to facilitate manipulation
-% municipiosa = table2array(municipios1);
-% x1=municipiosa(:,1); %long
-% y1=municipiosa(:,2); %lat
-% z1=municipiosa(:,3); %alt
-%
-% %plot map altitude all municipios
-%
-% f5 = figure('Name','altitude municipios');
-% scatter(x1,y1,15,z1,'filled')
-% colorbar
-% movegui(f5,[300 300]);
-%
-% % use trained ann to calculate performance for each municipio
-% for outputann = 1:size(x1)
-% output1(outputann) = net([x1(outputann);y1(outputann);z1(outputann)]);
-% end
-%
-% f6 = figure('Name','performance for all municipios');
-% scatter(x1,y1,10,output1,'filled')
-% colorbar
-% movegui(f6,[600 300]);
-
-% RMSEfinal = sqrt(mean((targets - outputexisting).^2));
-% f96 = figure('Name','mean RMSE for various node numbers (x1o)');
-% plot(meanRMSE)
-% movegui(f96,[900 300]);
-
-
-
-% for picount = 1:5
-%
-%
-% RMSEfinal(picount) = sqrt(mean((targets(picount,:) - outputexisting(picount,:)).^2));
-% scatter(targets(picount,:),outputexisting(picount,:))
-% end

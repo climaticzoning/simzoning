@@ -275,7 +275,7 @@ if  exist('MGR', 'var')
     MouldRisk=MouldRisk*100;
     MGR_Matrix=MouldRisk(:,NVModelIndex);
     PerformanceMatr{3}=MouldRisk(:,NVModelIndex);
-     fprintf('Mould growth risk hours successfully calculated \n');
+    fprintf('Mould growth risk hours successfully calculated \n');
 end
 if exist('ConfortTemp_Index', 'var') && sum(ConfortTemp_Index)>0
     Colddiscomf_Matrix=ColdDiscom_M(:,NVModelIndex);
@@ -317,7 +317,8 @@ for j=1:sum(HVACModelIndex)
     %  Data stored in .csv format: Lat, lon, alt and performance (a matrix per model for MPMA calculation using the Bin method)
     writetable(matx,Matrix_modelsName)
     movefile (Matrix_modelsName, destination,'f')
-    fprintf('Aggregated Simulation results saved \n')
+    expresion=char(strcat('Aggregated Simulation results per model saved:',num2str(j),' \n'));
+    fprintf(expresion)
 end
 
 
@@ -373,7 +374,7 @@ for j=1:numel(PerformanceIndicator)
     print(NameofFig, '-dpng', '-r0')
     close all force
 end
-fprintf('Figures for quality control saved \n');
+fprintf('Performance maps for quality control saved \n');
 cd (mainProjectFolder)
 
 

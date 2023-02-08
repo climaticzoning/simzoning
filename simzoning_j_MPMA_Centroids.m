@@ -42,7 +42,7 @@ for z=1:numel(Zoning_grid_type)
         a(:,matrix)=Zona==idx1';% comparering the orginal zoning and the nearest Neighbor of each Centroid
         % Percentage of misclassified points
         MPMA_Centroides(z,matrix)=(1-(sum(a(:,matrix))/size(data,1)))*100;
-        fclose all
+        fclose all;
         matrix=matrix+1;
     else
         % When there are multiple models
@@ -56,7 +56,7 @@ for z=1:numel(Zoning_grid_type)
             a(:,matrix)=Zona==idx1';%  comparering the orginal zoning and the nearest Neighbor of each Centroid
             % Percentage of misclassified points
             MPMA_Centroides(z,matrix)=(1-(sum(a(:,matrix))/size(data,1)))*100;
-            fclose all
+            fclose all;
             matrix=matrix+1;
         end
     end

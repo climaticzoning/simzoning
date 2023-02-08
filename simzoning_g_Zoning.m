@@ -54,12 +54,12 @@ load ImputVariables.mat
 %% Resolution 2 Irregular grid provided by user. e.g. Municipalities
 if ZoningAlternatives(2,1)>0
     z=2;
-    cd simresults\
+    cd Interpolated_data\
     % it loads interpolated data using municipalities locations
     load Table4clusters_Interp_Municipalities
     % It clears NaN values
     Table4cluster=rmmissing(Table4clusters_Interpolated);
-   % Performance data used for clustering
+    % Performance data used for clustering
     PerfMatrix=table2array(Table4cluster(:,4:end));
     cd(mainProjectFolder)
     % Script that clusters data
@@ -73,7 +73,7 @@ load ImputVariables.mat
 if ZoningAlternatives(3,1)>0
     z=3;
     % open simresults to get interpolated data
-    cd simresults\
+    cd Interpolated_data\
     % Loading interpolated based on regular grid
     load Table4clusters_Interp_Regular_Grid
     % cleaning NaN values

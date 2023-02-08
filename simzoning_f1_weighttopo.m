@@ -15,8 +15,6 @@
 % perf = readtable(file{2},'Range','a1:fh300');
 % perf=perf(perf.idx==0,:)
 %% remove folder with previous interpolated result
-dos ('rmdir gridresults /s /q');
-mkdir gridresults;
 perf=Table4cluster(:,2:end);
 perf.Properties.VariableNames([1 2 3]) = {'alt' 'lat' 'long'};
 perfa = table2array(perf);
@@ -255,7 +253,7 @@ ALTITUDE_GRID=table2array(data(:,3));
 d=[ALTITUDE_GRID,d];
 Table4clusters_Interpolated=array2table(d,'VariableNames',{'ALT','LAT','LON',Perf_model_variables{:}});
 cd(mainProjectFolder)
-cd simresults
+cd Interpolated_data
 NameofMatrix{grid}=char(strcat('Table4clusters_Interp_',Zoning_grid_type{grid},'.mat'));
 save(NameofMatrix{grid},'Table4clusters_Interpolated')
 Interpolated_data=array2table(d,'VariableNames',{'ALT','LAT','LON',Perf_model_variables{:}});

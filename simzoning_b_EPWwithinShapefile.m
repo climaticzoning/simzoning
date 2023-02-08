@@ -89,7 +89,7 @@ if Predifined_listofweatherfiles==0
     lon_selectedEPWs=[lon(idx1);lon(idx2)];
     %
 
-    if numel(Epws_torunSIm)==0;
+    if numel(Epws_torunSIm)==0
         fprintf('No EPW file encountered inside and near the boundaries of the area of study  \n');
         warning('Make sure to select the proper Shape file and the corresponding weather files to run simzoning ');
     else

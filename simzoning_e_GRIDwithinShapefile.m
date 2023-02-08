@@ -26,7 +26,9 @@ load('ImputVariables.mat')
 if Zoning_interpolated_PerfData_IrregularGrid==1
     % A  file containing LAT and LON (in that order) of municipalities provided by the user
     % in a csv format
+    cd grid_input\
     MunicipiosBrasil=readtable(Irregular_grid_input_data);% reading the file
+
     if IrregularGrid_exceeds_areaofstudy==1
         cd (mainProjectFolder)
         % This folder contains a shapefile with the limits of the area under study
@@ -79,8 +81,8 @@ if Zoning_interpolated_PerfData_IrregularGrid==1
     cd(mainProjectFolder)
     cd grid_input
     data=table(latcoord,loncoord, alt,'VariableNames',{'LAT','LON','ALT'});
-    save('gridforInterp_muni.mat','data')
-    writetable(data,'grid-alt_municipios.csv')
+    save('lat-lon-alt-grid_muni.mat','data')
+    writetable(data,'lat-lon-alt-grid_muni.csv')
 
 end
 if Zoning_interpolated_PerfData_RegularGrid==1
@@ -142,9 +144,9 @@ if Zoning_interpolated_PerfData_RegularGrid==1
     close all force;
     %%  Saving results
     cd(mainProjectFolder)
-    cd simresults
+    cd grid_input\
     data=table(latcoord, loncoord,alt,'VariableNames',{'LAT','LON','ALT'});
-    save('RegularGrid.mat','data')
+    save('lat-lon-alt-RegularGrid.mat','data')
     writetable(data,'lat-lon-alt-RegularGrid.csv')
     fprintf('Regular grid matrix saved \n');
 end
