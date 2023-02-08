@@ -2,16 +2,15 @@
         "CaseStudy":"Brazilian case study",
         "RunSimulations": 1,
         "GridSize_IDW":150,  
-        "Interpolation":1,
         "Interpolation_Method":2,
 	"Report_generation":1,
                 
         "mainProjectFolder": "C:/simzoning/",
-	  "BuildingIDFPath": "C:/simzoning/IDFS/BRAZIL_IDFS/",
+	"BuildingIDFPath": "C:/simzoning/IDFS/BRAZIL_IDFS/",
         "SimresultsOUTPUTpath": "C:/simzoning/Simulations_SZ/",
         "Aggregated_Simesults_Path":"./simresults/", 
          
-	  "EPlusPath": "C:/EnergyPlusV8-7-0/",
+	"EPlusPath": "C:/EnergyPlusV8-7-0/",
         "WeatherPath": "C:/EnergyPlusV8-7-0/WeatherData/",
         
         "Predifined_listofweatherfiles": 1,
