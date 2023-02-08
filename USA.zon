@@ -2,7 +2,6 @@
         "CaseStudy":"Florida Georgia and Tennessee",
         "RunSimulations":1,
         "GridSize_IDW":100,  
-        "Interpolation":1,
         "Interpolation_Method":2,
 	"Report_generation":0,
            
