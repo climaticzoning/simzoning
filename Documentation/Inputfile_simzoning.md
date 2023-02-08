@@ -14,18 +14,13 @@ The following fields should be included in the file:
 
 * RunSimulations
   - Boolean: 1 (=yes) or 0 (=no)
-  - Usage: This option allows the user to run (1) or to skip (0) simulations. This is useful when the user is developing further zoning alternative based on the same simulation results available from a previous analysis. As simulations are time-consuming, skipping simulations allows saving time in new analysis. If the user selects skipping simulations, but such results are not found in the expected folder, simzoning will return an error.
+  - Usage: This option allows the user to run (1) or to skip (0) simulations. This is useful when the user is developing further zoning alternatives based on the same simulation results available from a previous analysis. As simulations are time-consuming, skipping simulations allows saving time in new analysis. If the user selects skipping simulations, but such results are not found in the expected folder, simzoning will return an error.
   - Example: "RunSimulations": 1,
 
 * GridSize_IDW
   - Integer
-  - Usage: Define the number of the grid elements used in the whole zoning area to perform interpolation. If interpolation is not enable in the Interpolation field this value is ignored.
+  - Usage: Define the number of the grid elements used in the whole zoning area to perform interpolation. 
   - Example: "GridSize_IDW":150, 
-
-* Interpolation
-  - Boolean: 1 (=yes) or 0 (=no)
-  - Usage: User option to interpolate data. Interpolation is required to perform clustering using some types of zoning resolutions (types b and c, see the field related to clustering resolution types). 
-  - Example: "Interpolation":1,
 
 * Interpolation_Method
    - Integer: 1(=ANN), 2(=Elevation and coordinates)
@@ -34,7 +29,7 @@ The following fields should be included in the file:
   
 * Report_generation
    - Boolean: 1 (=yes) or 0 (=no)
-   - Usage: User option to generate a .PDF report for each case study. Available with the Matlab Report Generator. 
+   - Usage: User option to generate a .PDF report for each case study. Available only when running simzoning from Matlab command line ( MATLABR2022b, and the toolboxes: Deep Learning, Mapping, Matlab Report Generator, Statistic and Machine Learning). If the user adopts the compiled version simzoning.exe, Report_generation should be set to 0.
    - Example: "Report_generation":1,
 
 ### Paths
@@ -65,7 +60,7 @@ The following fields should be included in the file:
 
 * WeatherPath
   - String 
-  - Usage: Weather folder of the simulation program. Simzoning will copy to these location all files placed by the user in the project subfolder "Weatherfiles".
+  - Usage: Weather folder of the simulation program. Simzoning will copy to these location the required files to perform simulations placed by the user in the project subfolder "Weatherfiles".
   - Example: "WeatherPath": "C:/EnergyPlusV8-7-0/WeatherData/",
 
 ### Simulation settings
@@ -81,7 +76,7 @@ The following fields should be included in the file:
 
 * WeatherSource
   - String
-  - This option indicates the weather files type used in the study.
+  - Usage: This option indicates the weather files type used in the study. This option is useful when different sets of weather types are adopted.
   - Example:  "WeatherSource":"TMYx20072021",
   
 * run_simulations_with_all_climates
@@ -105,24 +100,25 @@ The following fields should be included in the file:
     - Example: "Num_of_cores":2,
     
 ### Extraction of simulation results 
-  * PerformanceIndicator
-      - String
-      - Performance indicators used for clustering
-      - Example:"PerformanceIndicator": ["Cooling", "Heating", "MGR" "Overheating", "Cold discomfort"],
-       
-   * Num_of_cores
+         
+  * Num_of_cores
       - Integer
       - Usage: If your computer have multiple CPUs, simzoning can run multiple simulations in parallel to reduce computation time. Num_of_cores is the number of dedicated processors for simulation chosen by the user.
        - Example: "Num_of_cores":2,
        
+  * PerformanceIndicator
+      - String
+      - Usage: Performance indicators used as input for clustering. 
+      - Example:"PerformanceIndicator": ["Cooling", "Heating", "MGR" "Overheating", "Cold discomfort"],
+
   * PerformanceIndicator_Zones_order
        - String
-       - Usage: Performance indicator used to number zones
+       - Usage: Performance indicator used to define the number of each zone in increasing order. 
        - Example: "PerformanceIndicator_Zones_order": ["Cooling"],
        
   * PerformanceIndicator_Units
        - String
-       - Usage: Performance indicators units used in figures and reports, these units must follow the same order of Performance indicators
+       - Usage: Performance indicators units used in figures and reports, these units must follow the same order of Performance indicators.
        - Example: "PerformanceIndicator_Units": ["(kWh/m<sup>2</sup>.a)", "(kWh/m<sup>2</sup>.a)", "(%)", "(%)", "(%)"],
        
    * Building_Zones_considered_for_ PerformanceIndex_calculation
@@ -133,9 +129,8 @@ names should match the variables described in the EnergyPlus output reports)
        
    * Building_Zones_occupation_Schedule
        - String
-       - Usage: The name of the schedule of each room used to calculate performance. They should follow the same order of building zones considered for performance calculation.
-       - Example: "Building_Zones_considered_for_ PerformanceIndex_calculation": [SCH_OCUP_DORM, SCH_OCUP_DORM, 
-SCH_OCUP_SALA],
+       - Usage: The name of the schedule of each room used to calculate performance requiring hourly values(e.g. Thermal comfort, MGR). They should follow the same order of building zones considered for performance calculation.
+       - Example: "Building_Zones_occupation_Schedule": [SCH_OCUP_DORM, SCH_OCUP_DORM, SCH_OCUP_SALA],
 
   * Conditioning_type_tag
     - String
@@ -144,80 +139,79 @@ SCH_OCUP_SALA],
       
   * Row_heating_cooling
     - String
-    - Usage: Row of the EnergyPlus output (*Table.csv) report containing heating and cooling annual load.
-    - Example:" Row_heating_cooling": ["HVAC","NV"],
+    - Usage: Row of the EnergyPlus output report  (*Table.csv)  containing heating and cooling annual load.
+    - Example:" Row_heating_cooling": ["49","50"],
   
   * Column_heating_cooling
     - Integers
-    - Usage: Column of the EnergyPlus output (*Table.csv) report containing heating and cooling annual load.
-    - Example:" Row_heating_cooling": ["6","5"],
+    - Usage: Column of the EnergyPlus output report  (*Table.csv) containing heating and cooling annual load.
+    - Example:" Row_heating_cooling": ["3","2"],
       
   * Line_EPW
     - Integer
-    - Usage: Line containing the EPW file name in the Energyplus output (*Table.csv) report.
+    - Usage: Line containing the EPW file name in the Energyplus output report (*Table.csv).
     - Example: "Line_EPW":["5","5"],
 
 ### Zoning settings
   * Macrozones_divisions
     - Boolean: 1 (=yes) or 0 (=no)
-    - Usage: User option to divide the area of study in Macrozones prior to the definition of Zones.
+    - Usage: User option to divide the area of study in Macrozones prior to the definition of Zones, also called Subzones.
     - Example:"Macrozones_divisions": 1,
     
   * NumberofZones
     - Integer
-    - Usage: Number of climatic zones, used when Macrozones are not required.
+    - Usage: Number of climatic zones, used when Macrozones are not required. This value will be used if Macrozones_divisions is set to 0.
     - Example:"NumberofZones":6,
     
   * Number_of_subzones
     - Integer
-    - Usage: In case the Macrozone option is selected, each macrozone will be divided into specific number of zones. The first macrozone is the coldest, where heating represents at least 5% of cooling load, (considering ideal loads).
+    - Usage: In case the Macrozone option is selected, each macrozone will be divided into a specific number of zones also called "subzones". In the Brazilian case study, the first macrozone is the coldest, where heating represents at least 5% of cooling load, (considering ideal loads). If the user adopts a different criteria to define macrozones, some adjustmenst are required in the script "simzoning_g1_Cluster_data" line 26.
     - Example:"Number_of_subzones":[“4”,”3”],
     
   * Zoning_isolated_locations
     - Boolean: 1 (=yes) or 0 (=no)
-    - Usage: Zoning based on points where simulations were performed.
+    - Usage: User option to perform clustering based on the locations where simulations were performed.
     - Example:"Zoning_isolated_locations":1,
     
   * Zoning_interpolated_PerfData_IrregularGrid
     - Boolean: 1 (=yes) or 0 (=no)
-    - Usage: Zoning based on a grid of points defined by the user, E.g. Municipalities. If the locations of weather files for simulation and the points provided by the user don't match, simzoning interpolates performance data using to generate the clusters.
+    - Usage: User option to perform clustering based on locations provided by the user. E.g. Municipalities. If the locations of weather files for simulation and the points provided by the user don't match, simzoning will interpolate performance data to generate the clusters.
     - Example:"Zoning_interpolated_PerfData_IrregularGrid":1,
-    
-  * Zoning_interpolated_PerfData_RegularGrid
-    - Boolean: 1 (=yes) or 0 (=no)
-    - Usage: Zoning based on a regular grid. The resolution of the grid is defined by the user with the variable: GridSize_IDW
-    - Example:"Zoning_interpolated_PerfData_RegularGrid":1,
-    
-    * grid_of_points_exceeds_areaofstudy
-    - Boolean: 1 (=yes) or 0 (=no)
-    - Usage: User option to indicate if the simulation points exceed the area of study, if so, the shape file of the area of study will be used to filter data.
-    - Example:"grid_of_points_exceeds_areaofstudy":1,
-    
-  * Irregular_grid_input_dat
-    - String
-    - Usage: Name of the file contaning coordinates of points provided by the user to perform clustering. The file format should be .csv. The file should contain two columns named LAT and	LON as the example file named "MunicipiosBrasil.csv" and located in the /Simzoning/grid_input/ folder. 
-    - Example:"Irregular_grid_input_dat":"MunicipiosBrasil.csv",
     
   * IrregularGrid_exceeds_areaofstudy
     - Boolean: 1 (=yes) or 0 (=no)
     - Usage: User option to indicate if the points of the irregular grid provided by the user exceeds the area of study, if so, the shape file of the area of study will be used to filter data.
     - Example:"IrregularGrid_exceeds_areaofstudy":1,
+     
+  * Irregular_grid_input_dat
+    - String
+    - Usage: Name of the file contaning coordinates of points provided by the user to perform clustering. The file format should be .csv. The file should contain two columns named LAT and	LON as the example file named "MunicipiosBrasil.csv" and located in the /Simzoning/grid_input/ folder. 
+    - Example:"Irregular_grid_input_dat":"MunicipiosBrasil.csv",
     
+  * Zoning_interpolated_PerfData_RegularGrid
+    - Boolean: 1 (=yes) or 0 (=no)
+    - Usage: User option to perform clustering based on a regular grid. The resolution of the grid is defined by the user with the variable: GridSize_IDW.
+    - Example:"Zoning_interpolated_PerfData_RegularGrid":1,
+    
+  * grid_of_points_exceeds_areaofstudy
+    - Boolean: 1 (=yes) or 0 (=no)
+    - Usage: User option to indicate if the simulation points exceed the area of study, if so, the shape file of the area of study will be used to filter data.
+    - Example:"grid_of_points_exceeds_areaofstudy":1,    
       
  * AlternativeMethod_ for_comparison
     - Boolean: 1 (=yes) or 0 (=no)
-    - Usage: Option to use an alternative method to compare clustering results using the MPMA index
+    - Usage: Option to use an alternative method to compare clustering results using the MPMA index.
     - Example:"AlternativeMethod_ for_comparison":1,
     
   * Name_of_AlternativeMethod_for_comparison
     - String
-    - Usage: The name must be the same of the Shapefile located in the folder C:\simzoning\GISfiles\CZ_Methods_Comparison, without the extension .shp. Such shape file must contain a feature named “zone” containing a numeric value to identify climatic zones.
+    - Usage: User option to indicate the name of the Shape file of the alernative method used to comparison. The name must be the same of the Shapefile located in the folder C:\simzoning\GISfiles\CZ_Methods_Comparison\, without the extension .shp. Such shape file must contain a feature named “zone” containing a numeric value to identify climatic zones.
     - Example:"Name_of_AlternativeMethod_for_comparison":["DegreeDays_Brazil","GT_Brazil"],
     
   ### Area of study
   * ShapeFileName_AreaofStudy
     - String
-    - Usage: Name of the shape file containing the limits of the area of study
+    - Usage: Name of the shape file containing the limits of the area of study.
     - Example:"Area of study":"RS_SC_PR_SP.SHP",
       
   * AreaofStudyShapefile_Path
@@ -229,42 +223,20 @@ SCH_OCUP_SALA],
     - String
     - Usage: Tiff file containing elevation data covering the area of study. Tiff files with projection data: WGS_1984_World_Mercator have been tested.
     - Example:"Elevation_file":"topografia1_ProjectRaster2.tif",
+   
+   
+  ### Fonts, size of points (plotted in maps and figures)
+  
+  * sizeofpoints and sizeofpointsHDM
+    - Integer
+    - Usage: Size and strokes of figures may vary depending on the area of study, density of points and resolution of maps adopted by the user. If required, the user can adjust the size of points plotted in maps from the Json file. sizeofpoints and sizeofpointsHDM are integers ranging from 10 to 60 indicating the size of points plottet in maps. sizeofpoints is used in low resolution maps and sizeofpointsHDM is used in high resolution maps(Interpolated data).
+    - Example:"sizeofpoints":30,
     
-<table style="table-layout: fixed; width: 40%">
-
-<thead>
-<tr class="header">
-<th colspan="2"><strong>Input data (Variable)</strong></th>
-<th colspan="3"><strong>Example</strong></th>
-<th colspan="3"><strong>Description</strong></th></tr>
-</thead>
-<tbody>
-
-
-
-
-
-</tr>
-<tr class="odd">
-<td colspan="8"><strong>Fonts, size of points (plotted in
-maps)</strong></td>
-</tr>
-<tr class="even">
-<td colspan="2"><p>"sizeofpoints":</p>
-<p>"sizeofpointsHDM":</p>
-<p>"TitlefontSize":</p>
-<p>"TextFontSize":</p>
-<p>"SubtitleFontSize":</p>
-<p>"LabelFontSize"</p></td>
-<td colspan="3"><p>Integer ranging from 10 to 30 (FontSize)</p>
-<p>And up to 60 (size of points)</p></td>
-<td colspan="3">Size of fonts used in titles, subtitles, labels and
-legends of figures. As well as the size of points in maps.</td>
-</tr>
-<tr class="odd">
-<td colspan="2"></td>
-<td colspan="3"></td>
-<td colspan="3"></td>
-</tr>
-</tbody>
-</table>
+  * TitlefontSize, SubtitleFontSize, TextFontSize, LabelFontSize
+    - Integer
+    - Usage: Size fonts used for titles, subtitles, legends and labels of figures. These properties can be customized in case of need. Values can range from 10 to 30 
+    - Example:"TitlefontSize": 25,
+    
+   
+    
+    
