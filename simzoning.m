@@ -48,9 +48,6 @@ delete('*.mat');
 if exist('Figures', 'dir')
     dos('rmdir Figures /s/q');
 end
-% if exist('grid_input', 'dir');
-%     dos('rmdir grid_input /s/q');
-% end
 if exist('simresults','dir')
     dos('rmdir simresults /s/q');
 end
@@ -70,7 +67,6 @@ mkdir Figures\Interpolation\;
 mkdir Figures\CZ_Methods_Comparison\;
 
 mkdir Outputs;
-mkdir grid_input;
 mkdir Simulations_SZ;
 mkdir Interpolated_data;
 
@@ -89,7 +85,7 @@ RunSimulations=jsonData.RunSimulations;
 % Matlab Report Generator
 Report_generation=jsonData.Report_generation;
 % User option to interpolate data(1=yes), (0=no)
-Interpolation=jsonData.Interpolation;
+Interpolation=1;
 % Interpolation method 1) ANN and 2) Lat, long and Alt.
 interpolation_method=jsonData.Interpolation_Method;
 
