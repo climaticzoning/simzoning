@@ -12,7 +12,7 @@
 % Open the weather file folder
 cd Weatherfiles\
 %extracting latitude and longitude from Weather files
-for j=jmin:numel(Epws_torunSIm)
+for j=1:numel(Epws_torunSIm)
     fullnameepw=Epws_torunSIm(j);
     filename=char(strcat(fullnameepw));
     %% Initialize variables.
