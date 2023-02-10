@@ -20,7 +20,7 @@
         "run_simulations_with_all_climates": 1,
         "jmin": 1, 
         "Maxi_Num_of_climates_for_simulation": 10,
-        "Num_of_cores": 4,
+        "Num_of_cores": 2,
        
         "PerformanceIndicator":["Cooling", "Heating", "MGR", "Overheating","Cold discomfort"],
         "PerformanceIndicator_Zones_order":["Cooling"],
