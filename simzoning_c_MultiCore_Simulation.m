@@ -185,7 +185,7 @@ fclose ("all");
 cd(WeatherPath)
 if numel(Epws_torunSIm)>0
     for j=1:numel(Epws_torunSIm)
-        file=Epws_torunSIm(j);
+         file=Epws_torunSIm{j};
         delete(file)
     end
 end
