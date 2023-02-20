@@ -3,7 +3,7 @@
         "RunSimulations": 1,
         "GridSize_IDW":60,  
         "Interpolation_Method":1,
-	"Report_generation":1,
+	"Report_generation":0,
    
         
         "mainProjectFolder": "C:/simzoning/",
